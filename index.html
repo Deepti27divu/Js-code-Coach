@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="style.css"></link>
+ <link href="https://fonts.googleapis.com/css?family=Changa+One|Roboto&display=swap" rel="stylesheet">
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.7/ace.js" integrity="sha256-C7DTYRJLG+B/VEzHGeoPMw699nsTQYPAXHKXZb+q04E=" crossorigin="anonymous"></script>
+ 
+        <title>Page Title</title>
+    </head>
+    <body>
+    <!---Loading....--->
+    <div id="loading">
+     <svg id="svg" class="spinner" width="45px" height="45px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="circle" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg>
+            <p class="loading-text">Loading . . .</p>
+
+        </div>
+  <!----menu---->
+         <div class="fa fa-tasks setting menu"></div>
+         <div class="navitems">
+         <span class="fa fa-arrows back"></span>
+         <div class="top-nav home">Home</div>
+         <div class="top-nav contact">Contact</div>
+         <div class="top-nav about">About</div>    
+         </div>
+         <!--menu end--->   
+              
+     <!----Loader End----->        
+     
+      <!---Container-->  
+     <div class="container">
+     
+          
+     <!--Header Top-->     
+     <div class="heading-info">
+         <p class="main-heading">Code Coach Playground</p>
+         <span class="fa fa-cog setting"></span>
+     </div>
+     <!---Header Top End--->
+    
+    
+     
+     <!--Couses--->
+       <div class="course">
+      
+       </div>
+           <!--Courses End-->
+       
+
+ <!------------_----------------------------->      
+       <!--Js Code Coach Playground--->
+       <div class="code-coach">
+       
+       <div class="information">
+           
+       </div>              
+          <div id="description-container">
+           
+            <div><label id="navigator" /></div>
+            <div class="code-container">
+            <div onclick="activate_ground(0)" class="code-title">Even Number</div>
+            <div onclick="activate_ground(1)" class="code-title">Odd Number</div>
+            <div onclick="activate_ground(2)" class="code-title">Pig Latin</div>
+            <div onclick="activate_ground(3)" class="code-title">Gotham City</div>
+            <div onclick="activate_ground(4)" class="code-title">Secret Message</div>
+            <div onclick="activate_ground(5)" class="code-title">Hallowen Candy</div>
+            <div onclick="activate_ground(6)" class="code-title">Dega Vu</div>
+            <div onclick="activate_ground(7)" class="code-title">Extra-Terrestrials</div>
+            <div onclick="activate_ground(8)" class="code-title">PassWord Validator</div>
+            <div onclick="activate_ground(9)" class="code-title">Jungle Camping</div>
+           <div onclick="activate_ground(10)" class="code-title">Vowel Counter</div>
+           <div onclick="activate_ground(11)" class="code-title">Fruit Bowl</div>
+           <div onclick="activate_ground(12)" class="code-title">Security</div>
+            </div>
+           
+             <div class="code-component">
+            <label id="code-level"></label>
+            <label id="code-description"></label>
+            </div>
+        </div>
+        <div id="editor-container">
+            <div id="editor"></div>
+        </div>
+        <div id="controls-container">
+        <button class="btn-problem" onclick="show_problem()">Problem</button>
+        <button class="btn-problem" onclick="back_home()">Home</button>
+                <button class="btn-problem" onclick="evaluateCode()">Run</button>
+        </div>
+        <div class="error-container">
+            <label id="error"></label>
+        </div>
+    
+        <div id="cases-container">
+            <div id="cases"></div>
+        </div>                   
+       </div>
+       <!--Js Code Coach Playground End--->
+<!------------_----------------------------->    
+
+
+    <!---LeaderBoard--->   
+       <div class="leaderboard">
+       
+       
+       </div>
+       <!------LeaderBoardEnd------->
+       
+       
+    
+    <!--Header Botttom Container-->
+     
+       <div class="header-bottom">
+       <button onclick="js_course()" class="bottom-menu courses"><span class="fa fa-edit"></span></button>     
+        <button onclick="coach()" class="bottom-menu problem"><span class="fa fa-code"></span></button>
+        <button onclick="leaderboard()" class="bottom-menu leaderboard"><span class="fa fa-group"></span></button>  
+            
+       </div>
+   <!---Header Bottom Container End--->    
+       
+     </div> 
+     <!---Container End--->
+     <script type="text/javascript" src="script.js"></script>
+    </body>
+</html>
