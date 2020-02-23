@@ -1,8 +1,9 @@
 const dom={};
 let editor;
 let activeIndex = 1;
+let counter =0;
 const HIDDEN = "This test case is hidden";
-var editor_theme= "light"
+
 function id(_){
     return document.getElementById(_);
 }
@@ -20,8 +21,15 @@ back.addEventListener("click",function(){
     document.querySelector(".navitems").style.left = "-100vw";
 });
   setTimeout(()=>{ 
-    id("loading").classList.add("remove");   
+    id("loading").classList.add("remove");
+   for(var i=0;i<13;i++){
+   clas("difficulty")[i].innerText=codes[i].level;
+} 
+    
    },1000);
+   
+  
+   
    
 }
 function js_course(){
@@ -70,10 +78,10 @@ function initDom(no){
 
 
 
-function init1(no,theme){
-    initDom(no);
+function init1(no){
+    initDom(no);    
     editor = ace.edit("editor");
-    editor.setTheme("ace/theme/"+theme);
+    editor.setTheme("ace/theme/monokai");
     editor.session.setMode("ace/mode/javascript");
     editor.setValue(codes[activeIndex].code);
     
@@ -133,7 +141,7 @@ const codeSchema = codes[activeIndex];
 
 function activate_ground(no){
    activeIndex = no;
-   init1(activeIndex,"monokai");
+   init1(activeIndex);
    clas("code-container")[0].style.visibility = "hidden";
    clas("code-container")[0].style.opacity= "0";
    id("editor-container").style.visibility ="visible";
@@ -142,10 +150,8 @@ function activate_ground(no){
    id("controls-container").style.opacity= "1";
    id("cases").style.visibility ="visible";
    id("cases").style.opacity ="1";
-  // clas("theme")[0].style.visibility ="visible";
-  // clas("theme")[0].style.opacity ="1";
    dom.cases.innerHTML = "";
-   show_problem();
+   show_problem()
 }
 
 
@@ -154,10 +160,9 @@ function show_problem(){
 `<div class="problem-detail">
 <h2>${codes[activeIndex].title}</h2><div class="intro">${codes[activeIndex].description}</div>
 <h3>Task</h3><div class="task">${codes[activeIndex].task}</div>
-<h3>Input Format</h3><div class="inputFormat">${codes[activeIndex].input_format}</div>
+<h3>Input Formaat</h3><div class="inputFormat">${codes[activeIndex].input_format}</div>
 <h3>Output Format</h3><div class="outputFormat">${codes[activeIndex].output_format}</div>
-<h3>Input Sample</h3><div class="inputDemo">${codes[activeIndex].input_demo}</div><h3>Output Sample</h3><div class="outputDemo">${codes[activeIndex].output_demo}</div>
-</div><br><br><br>`;
+<h3>Input Sample</h3><div class="inputDemo">${codes[activeIndex].input_demo}</div><h3>Output Sample</h3><div class="outputDemo">${codes[activeIndex].output_demo}</div></div><br><br><br><br>`;
  
  
 }
