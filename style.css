@@ -64,7 +64,7 @@ button:hover{
     margin: auto;
     background: rgba(0, 0, 0, 0.8);
     z-index:7;
-    font-family: 'Changa One',sans-serif;
+    font-family:"Oswald","sans-serif";
     font-size: 2em;
     overflow-x: hidden;
     color: #ffffff;
@@ -170,7 +170,7 @@ transform:translate(-50%,-50%);
 }
 /*Heading*/
 .heading-info{
-    font-family: 'Changa One',sans-serif;
+    font-family: 'Oswald',sans-serif;
     box-shadow:0px 8px 13px 2px #0000005c;
     position:fixed;
     top:0px;
@@ -253,7 +253,7 @@ transform:translate(-50%,-50%);
     padding-top:20px;
     padding-bottom:20px;
     border-radius:30px;
-    font-family: 'Changa One',sans-serif;
+    font-family: 'Oswald',sans-serif;
     text-align:center;
 }
 .cases-test:last-child{
@@ -343,7 +343,7 @@ transform:translate(-50%,-50%);
     box-shadow:0px 8px 30px 4px #0000005c;
     padding-top:15px;
     padding-bottom:20px;
-    font-family: 'Changa One',sans-serif;
+    font-family: 'Oswald',sans-serif;
     color:#fff;
     transition:1s;
 }
@@ -383,7 +383,7 @@ transform:translate(-50%,-50%);
 .btn-problem{
    width:25%;
    height:40px;
-   font-family: 'Changa One',sans-serif; 
+   font-family: 'Oswald',sans-serif; 
    border:none;
    box-shadow:0px 4px 13px 2px #0000005c;
    margin-top:5px;
@@ -417,28 +417,28 @@ transform:translate(-50%,-50%);
     background-color:rgba(0,0,250,0.3);
     padding:5%;
     width:90%;
-    font-family: 'Changa One',sans-serif;
+    font-family: "Times New Roman", Times, serif;
     margin:0px;
     border-radius:5px; 
     box-shadow:0px 4px 13px 2px #0000005c;
+    color:#fff;
 }
 h3,h2{
     background-color:tomato;
-    color:#fff;
+    text-shadow: 0 5px 20px lightgreen;
     text-align:center;
     margin-top:5px;
+    font-family:"Oswald",sans-serif;
 }
 .inputFormat,.outputFormat,.intro,.task,.inputDemo,.outputDemo{
-    margin-bottom:30px;
-    color:#000;
-    
+    margin-bottom:30px;    
 }
 
 .problemInfo{
     display:flex;
     float:right;
     color:#fff;
-    font-size:12px;
+    font-size:10px;
     
 }
 .difficulty,.solvedInfo{
