@@ -1,9 +1,9 @@
 const dom={};
-let editor;
-let activeIndex = 1;
-let counter =0;
+var editor;
+var activeIndex ;
+var counter =0;
+var solved_problem = [];
 const HIDDEN = "This test case is hidden";
-
 function id(_){
     return document.getElementById(_);
 }
@@ -27,9 +27,7 @@ back.addEventListener("click",function(){
 } 
     
    },1000);
-   
   
-   
    
 }
 function js_course(){
@@ -65,9 +63,9 @@ function leaderboard(){
     clas("course")[0].style.opacity="0";
 }
 
-function initDom(no){
+function initDom(){
     
-    dom.codeTitle = clas("code-title")[no];
+    dom.codeTitle = clas("code-title")[activeIndex];
     dom.codeLevel = id("code-level");
     dom.codeDescription = id("code-description");    
     dom.error = id("error");    
@@ -78,8 +76,8 @@ function initDom(no){
 
 
 
-function init1(no){
-    initDom(no);    
+function init1(){
+    initDom();    
     editor = ace.edit("editor");
     editor.setTheme("ace/theme/monokai");
     editor.session.setMode("ace/mode/javascript");
@@ -98,7 +96,7 @@ function getEvaluatedValue(value){
 
 
 function evaluateCode(){
-const codeSchema = codes[activeIndex];
+var codeSchema = codes[activeIndex];
     
     dom.cases.innerHTML = "";
     editor.container.style.pointerEvents = "none";
@@ -106,7 +104,7 @@ const codeSchema = codes[activeIndex];
     
     for(let testCase of codeSchema.testCases) {
         // add a call to the function with the test value to the user function
-        const testCode = editor.getValue() + `${testCase.run}`;
+        var testCode = editor.getValue() + `${testCase.run}`;
     
         // evaluate the result
         const yourOutput = eval(testCode);
@@ -118,7 +116,14 @@ const codeSchema = codes[activeIndex];
     
         const info = `${yourText}<br/>${expectedText}`;
     
+    
+    if(yourOutput==expectedOutput){
+            counter++;
+        }
+    
         // compare the output to the expected output
+        
+
         const result = yourOutput == expectedOutput ? "Passed":"Failed";
         
         if(!result){
@@ -135,13 +140,16 @@ const codeSchema = codes[activeIndex];
     codeSchema.solved = solved;
     codeSchema.code = editor.getValue();
     
-    
-    
+      if(counter==codes[activeIndex].testCases.length){
+solved_problem.push(activeIndex); 
+}
+        
 }
 
 function activate_ground(no){
    activeIndex = no;
-   init1(activeIndex);
+   //console.log(no)
+   init1();
    clas("code-container")[0].style.visibility = "hidden";
    clas("code-container")[0].style.opacity= "0";
    id("editor-container").style.visibility ="visible";
@@ -152,6 +160,7 @@ function activate_ground(no){
    id("cases").style.opacity ="1";
    dom.cases.innerHTML = "";
    show_problem()
+   activeIndex = no;
 }
 
 
@@ -178,6 +187,10 @@ function back_home(){
    id("cases").style.visibility ="hidden";
    id("cases").style.opacity ="0";
    dom.cases.innerHTML = "";
+   solved_problem.forEach(function(data){
+    clas("solvedInfo")[data].innerText="Solved"; 
+     counter =0;
+   });
    
 }
 
@@ -197,6 +210,7 @@ const codes = [
         output_demo:"Not Even",
         code: `function isEven(input){
     // your code goes here
+    
     
 }`,
         testCases:  [
@@ -222,6 +236,7 @@ const codes = [
         output_demo:"Odd",
         code: `function isOdd(input){
     // your code goes here
+    
     
 }`,
         testCases:  [
@@ -303,7 +318,7 @@ const codes = [
             {run: "secretMsg('Vegetable Pizza')", expected: "evtvgzyov kraaz",hidden:false},
             {run: "secretMsg('World')", expected: "dliow", hidden: true},
             {run: "secretMsg('Hello')", expected: "svool", hidden: true},
-            {run: "secretMsg(Pizza)", expected: "kraaz", hidden: true},
+            {run: "secretMsg('Pizza')", expected: "kraaz", hidden: true},
         ] 
     },
     
@@ -412,7 +427,7 @@ If the password passes the check, output 'Strong', else output 'Weak'.`,
     
 }`,
         testCases:  [
-            {run: "validate(hello)", expected: "Weak",hidden:false},
+            {run: "validate('hello')", expected: "Weak",hidden:false},
             {run: "validate('coderCode$@89')", expected: "Strong",hidden:false},
             {run: "validate('12345678')", expected: "Weak", hidden: true},
             {run: "validate('Sololearn&@&@&@&@12345678')", expected: "Strong", hidden: true}, 
