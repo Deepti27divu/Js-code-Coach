@@ -434,6 +434,33 @@ h3,h2{
     
 }
 
+.problemInfo{
+    display:flex;
+    float:right;
+    color:#fff;
+    font-size:12px;
+    
+}
+.difficulty,.solvedInfo{
+    height:2vh;
+    width:20%;
+    background-color:rgba(0,0,250,0.4);
+    position:absolute;
+    border-radius:3px;
+    text-align:center;
+    padding-top:1vh;
+    padding-bottom:1.5vh;
+    box-shadow:0px 4px 13px 2px #0000005c;
+    padding-left:5px;
+    padding-right:5px;
+}
+.difficulty{
+   right:25%;
+}
+.solvedInfo{
+   right:1%;
+}
+
 
 
 
