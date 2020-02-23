@@ -32,6 +32,10 @@ body {
 .leaderboard{
     left:70%;
 }
+
+button:hover{
+    outline:none;
+}
 button:hover{
     outline:none;
     transform:scale(0.9,0.9);
