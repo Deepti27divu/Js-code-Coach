@@ -1,3 +1,13 @@
+
+<!----
+Ace Code Editor Website 
+https://ace.c9.io/#nav=embedding&api=editor
+
+
+Host page link:
+https://coder135792468.github.io/Js-code-Coach/
+---->
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,6 +30,7 @@
         
          <div class="navitems">
          <span class="fa fa-arrows back"></span>
+          <img src="https://api.sololearn.com/Uploads/Avatars/1.jpg" class="menu-pic"/>
          <div class="top-nav home">Home</div>
          <div class="top-nav contact">Contact</div>
          <div class="top-nav about">About</div>    
@@ -57,8 +68,6 @@
            
        </div> --->             
           <div id="description-container">
-           
-            <div><label id="navigator" /></div>
             <div class="code-container">
             <div onclick="activate_ground(0)" class="code-title">Even Number
             <div class="problemInfo"><span class="difficulty">Loading..</span><span class="solvedInfo">UnSolved</span></div>
@@ -84,7 +93,7 @@
             <div onclick="activate_ground(7)" class="code-title">Extra-Terrestrials
             <div class="problemInfo"><span class="difficulty">Loading..</span><span class="solvedInfo">UnSolved</span></div>
             </div>
-            <div onclick="activate_ground(8)" class="code-title">PassWord Validator
+            <div onclick="activate_ground(8)" class="code-title">Password Validator
             <div class="problemInfo"><span class="difficulty">Loading..</span><span class="solvedInfo">UnSolved</span></div>
             </div>
             <div onclick="activate_ground(9)" class="code-title">Jungle Camping
@@ -127,7 +136,24 @@
 
 
     <!---LeaderBoard--->   
-       <div class="leaderboard">
+       <div class="user-leaderboard">
+       
+       <!---User Profile--->
+        <div class="user-summary">
+      <img src="https://api.sololearn.com/Uploads/Avatars/1.jpg" class="user-pic"/>
+      <p class="user-name">Anonymous</p><hr>        
+      <p class="user-points">Points : 0</p>     
+      </div>
+      
+      
+      <div class="solved_problems_info">
+       <h3 class="solved_problems_heading">Solved Problems</h3>
+       <div class="solved_problems">
+               
+          
+                  
+       </div>  
+      </div>       
        
        
        </div>
@@ -140,7 +166,7 @@
        <div class="header-bottom">
        <button onclick="js_course()" class="bottom-menu courses"><span class="fa fa-edit"></span></button>     
         <button onclick="coach()" class="bottom-menu problem"><span class="fa fa-code"></span></button>
-        <button onclick="leaderboard()" class="bottom-menu leaderboard"><span class="fa fa-group"></span></button>  
+        <button onclick="leaderboard()" class="bottom-menu leaderboard"><span class="fa fa-user"></span></button>  
             
        </div>
    <!---Header Bottom Container End--->    
