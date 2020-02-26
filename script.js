@@ -3,6 +3,10 @@ var editor;
 var activeIndex ;
 var counter =0;
 var solved_problem = [];
+var points=0;
+var easy_problem_points= 10;
+var medium_problem_points=50;
+var hard_problem_points=100;
 const HIDDEN = "This test case is hidden";
 function id(_){
     return document.getElementById(_);
@@ -37,8 +41,8 @@ function js_course(){
     
     clas("code-coach")[0].style.visibility="hidden";
     clas("code-coach")[0].style.opacity="0";
-    clas("leaderboard")[0].style.visibility="hidden";
-    clas("leaderboard")[0].style.opacity="0";
+    clas("user-leaderboard")[0].style.visibility="hidden";
+    clas("user-leaderboard")[0].style.opacity="0";
     
 }
 function coach(){
@@ -48,14 +52,14 @@ function coach(){
     
  clas("course")[0].style.visibility="hidden";
     clas("course")[0].style.opacity="0";
-    clas("leaderboard")[0].style.visibility="hidden";
-    clas("leaderboard")[0].style.opacity="0";
+    clas("user-leaderboard")[0].style.visibility="hidden";
+    clas("user-leaderboard")[0].style.opacity="0";
     
 }
 function leaderboard(){
     clas("main-heading")[0].innerHTML ="Leaderboard";
-    clas("leaderboard")[0].style.visibility="visible";
-    clas("leaderboard")[0].style.opacity="1";
+    clas("user-leaderboard")[0].style.visibility="visible";
+    clas("user-leaderboard")[0].style.opacity="1";
     
     clas("code-coach")[0].style.visibility="hidden";
     clas("code-coach")[0].style.opacity="0";
@@ -70,7 +74,6 @@ function initDom(){
     dom.codeDescription = id("code-description");    
     dom.error = id("error");    
     dom.cases = id("cases");
-    dom.navigator = id("navigator");
     
 }
 
@@ -141,7 +144,29 @@ var codeSchema = codes[activeIndex];
     codeSchema.code = editor.getValue();
     
       if(counter==codes[activeIndex].testCases.length){
-solved_problem.push(activeIndex); 
+solved_problem.push(activeIndex);
+ if(codes[activeIndex].level=="Easy"){
+    points+=easy_problem_points;
+       
+}
+else if(codes[activeIndex].level=="Medium"){
+    points+= medium_problem_points;
+        
+}
+else if(codes=[activeIndex].level=="Hard"){
+    points+= hard_problem_points;
+    
+}
+  
+ if(codes[activeIndex].isSolved==false){
+ var data_info = `
+  <div onclick="activate_ground(${activeIndex})" class="code-title">${codes[activeIndex].title}
+            <div class="problemInfo"><span class="difficulty">${codes[activeIndex].level}</span><span class="solvedInfo">UnSolved</span></div>
+            </div>
+  `;
+ clas("solved_problems")[0].innerHTML +=  data_info;
+ codes[activeIndex].isSolved = true;
+   };
 }
         
 }
@@ -167,11 +192,11 @@ function activate_ground(no){
 function show_problem(){
  dom.cases.innerHTML = 
 `<div class="problem-detail">
-<h2>${codes[activeIndex].title}</h2><div class="intro">${codes[activeIndex].description}</div>
-<h3>Task</h3><div class="task">${codes[activeIndex].task}</div>
-<h3>Input Formaat</h3><div class="inputFormat">${codes[activeIndex].input_format}</div>
-<h3>Output Format</h3><div class="outputFormat">${codes[activeIndex].output_format}</div>
-<h3>Input Sample</h3><div class="inputDemo">${codes[activeIndex].input_demo}</div><h3>Output Sample</h3><div class="outputDemo">${codes[activeIndex].output_demo}</div></div><br><br><br><br>`;
+<h2 class="heading1">${codes[activeIndex].title}</h2><div class="intro">${codes[activeIndex].description}</div>
+<h3 class="heading2">Task</h3><div class="task">${codes[activeIndex].task}</div>
+<h3 class="heading2">Input Formaat</h3><div class="inputFormat">${codes[activeIndex].input_format}</div>
+<h3 class="heading2">Output Format</h3><div class="outputFormat">${codes[activeIndex].output_format}</div>
+<h3 class="heading2">Input Sample</h3><div class="inputDemo">${codes[activeIndex].input_demo}</div><h3 class="heading2">Output Sample</h3><div class="outputDemo">${codes[activeIndex].output_demo}</div></div><br><br><br><br>`;
  
  
 }
@@ -190,6 +215,8 @@ function back_home(){
    solved_problem.forEach(function(data){
     clas("solvedInfo")[data].innerText="Solved"; 
      counter =0;
+  clas("user-points")[0].innerText ="Points : "+points;
+  
    });
    
 }
@@ -208,6 +235,7 @@ const codes = [
         output_format:`If a Number is Even then it show "Even" OtherWise It show "Not Even"`,
         input_demo:3,
         output_demo:"Not Even",
+        isSolved : false,
         code: `function isEven(input){
     // your code goes here
     
@@ -234,6 +262,7 @@ const codes = [
         output_format:`If a Number is Odd then it show "Odd" OtherWise It show "Not Odd"`,
         input_demo:7,
         output_demo:"Odd",
+        isSolved : false,
         code: `function isOdd(input){
     // your code goes here
     
@@ -261,6 +290,7 @@ const codes = [
         output_format:`A string of the same sentence in Pig Latin.`,
         input_demo:"wow",
         output_demo:"owway",
+        isSolved : false,
         code: `function pigLatin(input){
     // your code goes here
     
@@ -286,6 +316,7 @@ const codes = [
         output_format:`A string that says 'I got this!', 'Help me Batman', or 'Good Luck out there!' depending on the scenario`,
         input_demo:"7",
         output_demo:"Help me Batman",
+        isSolved : false,
         code: `function gothamCity(input){
     // your code goes here
     
@@ -309,6 +340,7 @@ const codes = [
         output_format:`A string of your message once you have encoded it (all lower case).`,
         input_demo:"Hello World",
         output_demo:"svool dliow",
+        isSolved : false,
         code: `function secretMsg(input){
     // your code goes here
     
@@ -335,6 +367,7 @@ const codes = [
         output_format:`A percentage value rounded up to the nearest whole number.`,
         input_demo:"4",
         output_demo:"50",
+        isSolved : false,
         code: `function hallowenCandy(input){
     // your code goes here
     
@@ -360,6 +393,7 @@ const codes = [
 `,
         input_demo:"cooddddeeee",
         output_demo:"Deja Vu",
+        isSolved : false,
         code: `function degaVu(input){
     // your code goes here
     
@@ -385,6 +419,7 @@ How will you learn to communicate with them?`,
         output_format:`A string of the reversed word that represents the original word translated into alien language.`,
         input_demo:"code",
         output_demo:"edoc",
+        isSolved : false,
         code: `function rverse(input){
     // your code goes here
     
@@ -422,6 +457,7 @@ If the password passes the check, output 'Strong', else output 'Weak'.`,
         
         input_demo:"Hello@$World19",
         output_demo:"Strong",
+        isSolved : false,
         code: `function validate(input){
     // your code goes here
     
@@ -457,6 +493,7 @@ If the password passes the check, output 'Strong', else output 'Weak'.`,
 `,
         input_demo:"Rawr Chirp Ssss",
         output_demo:"Tiger Bird Snake",
+        isSolved : false,
         code: `function jungle(input){
     // your code goes here
     
@@ -494,6 +531,7 @@ You are given example sentences and are to give a total amount of vowels that ar
 `,
         input_demo:"this is a sentence",
         output_demo:"6",
+        isSolved : false,
         code: `function vowelCounter(input){
     // your code goes here
     
@@ -522,6 +560,7 @@ You are given example sentences and are to give a total amount of vowels that ar
 `,
         input_demo:"26",
         output_demo:"4",
+        isSolved : false,
         code: `function fruitBowl(input){
     // your code goes here
     
@@ -557,6 +596,7 @@ Space on the casino floor that is not occupied by either money, the thief, or a 
 `,
         input_demo:"xxxxxGxx$xxxT",
         output_demo:"ALARM",
+        isSolved : false,
         code: `function security(input){
     // your code goes here
     
