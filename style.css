@@ -1,8 +1,8 @@
 
 :root{
-    --theme:#05386D;
+    --other:#ff6666;
     --default:#fff;
-    --other:#9A31EA;
+    --theme:#9A31EA;
     --default-text:#fff;
 }
 
@@ -177,13 +177,16 @@ svg{
     top:50px;
     left:0px;
     z-index:2;
+    background-color:var(--default);
 }
+
+
+
 
 .top-learner,.setting-page{
     visibility:hidden;
     opacity:0;
-    background-color:var(--default);
-    overflow:hidden;
+    overflow:scroll;
 }
 
 
@@ -209,6 +212,7 @@ svg{
 #cases-container{
     position: relative;
     overflow-y:scroll;
+    visibility:hidden;
 }
 
 #error {
@@ -244,7 +248,7 @@ svg{
 .code-title{
     width:90%;
     height:3vh;
-    background-color:var(--default);
+    background-color:#fff;
     box-shadow:0px 4px 13px 1px #0000005c;
     border-radius:2px;
     padding-top:3vh;
@@ -317,18 +321,19 @@ svg{
 
 
 .top-nav{
-    width:100%;
+    width:90%;
     height:10px;
     background-color:var(--other);
     text-align:center;
     margin-top:30px;
-    border-radius:20px;
-    box-shadow:0px 8px 30px 4px #0000005c;
+    margin-left:5%;
+    border-radius:5px;
+    box-shadow:0px 8px 20px 4px #0000005c;
     padding-top:15px;
     padding-bottom:20px;
     font-family: 'Oswald',sans-serif;
     color:var(--default-text);
-    transition:1s;
+    transition:0.7s;
     margin-bottom:30px;
 }
 
@@ -645,7 +650,7 @@ main{
     background-color:var(--other);
     color:#f0f0ff;
     padding:1em;
-    border-radius:4px;
+    border-radius:2px;
     font-family: "Itim", Times, serif;
 }
 
@@ -660,6 +665,8 @@ main{
     background-color:var(--theme);
     color:var(--default-text);
     font-family: "Itim", Times, serif;
+    border-radius:2px;
+    box-shadow:0px 3px 3px rgba(0,0,0,0.2);
 }
 
 .quizzes_course_opt:hover{
@@ -684,12 +691,16 @@ main{
 
 #checkButton{
     font-size:2em;
-    padding:0.3em 0.7em;
     background-color:var(--other);
     color:var(--default-text);
     border:none;
-    border-radius:5px;
+    border-radius:2px;
+    width:50%;
+    margin-left:25%;
+    height:40px;
     font-family: "Itim", Times, serif;
+    box-shadow:0px 6px 6px rgba(0,0,0,0.2);
+    margin-bottom:10px;
 }
 
 main > div:last-child{
@@ -737,7 +748,7 @@ main > div:last-child{
     position:fixed;
     bottom:0px;
     box-shadow: 0 0 20px #0005;
-    background-color:lightgrey;
+    background-color:#fff;
     z-index:8;
 }
 .nav{
@@ -754,19 +765,32 @@ main > div:last-child{
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--default);
+    background:#fff;
     font-size: 13px;
     transition: 0.5s;
-    color: purple;
+    color: var(--theme);
     transition: 1s;
 }
+
+.item:hover {
+ background: #fff radial-gradient(circle, transparent 1%, #fff 1%) center/15000%;
+}
+.item:active { 
+   background-color: #aaa; background-size: 100%; transition: background 0s; 
+}
+.item.active { 
+    border-bottom: 2px solid var(--nav-active-color); 
+} 
+
+
+
 .fa{
     font-weight:bold;
 }
 .navindicator{
     width: 100%;
-    height: 2px;
-    background: var(--default);
+    height: 4px;
+    background: #fff;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -780,7 +804,7 @@ main > div:last-child{
 }
 #active{
     -webkit-clip-path: polygon(0% 0%, 50% 0%, 100% 0%, 100% 100%, 0% 100%);
-    color: #000;    
+    color: var(--other);    
     animation-fill-mode: forwards;
     animation-name: colorchange;   
     animation-duration: 0s; 
@@ -826,9 +850,9 @@ main > div:last-child{
 
 .skelton-user-name-container-post{
    width: 97%;
-   height: 15vh;
+   height: 20vh;
    margin-top:5px;
-   border:2px solid rgba(0,0,0,0.1);
+   border:0.5px solid lightgrey;
    border-radius:4px;
    margin-left:1%;
    margin-bottom:5px;
@@ -878,4 +902,6 @@ skelton-user-name-container-post .skelton-user-name-line ~ .skelton-user-name-li
    background-position: 240px;
    }
 }
+
+
 
