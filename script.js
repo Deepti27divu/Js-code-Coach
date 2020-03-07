@@ -66,6 +66,40 @@ document.getElementById("indicator").style.left = 100/items.length*i + "%" ;
           
 }
 
+
+function top_rankers(e){
+    items(e);
+    clas("main-heading")[0].innerHTML ="Top Learners";
+    clas("course")[0].style.visibility="hidden";
+    clas("course")[0].style.opacity="0";  
+    clas("code-coach")[0].style.visibility="hidden";
+    clas("code-coach")[0].style.opacity="0";
+    clas("user-leaderboard")[0].style.visibility="hidden";
+    clas("user-leaderboard")[0].style.opacity="0";
+    
+    clas("top-learner")[0].style.visibility="visible";
+    clas("top-learner")[0].style.opacity="1";
+    clas("setting-page")[0].style.visibility="hidden";
+    clas("setting-page")[0].style.opacity="0";
+    
+}
+
+function setting_page(e){
+    items(e);
+    clas("main-heading")[0].innerHTML ="Setting";
+    clas("course")[0].style.visibility="hidden";
+    clas("course")[0].style.opacity="0";  
+    clas("code-coach")[0].style.visibility="hidden";
+    clas("code-coach")[0].style.opacity="0";
+    clas("user-leaderboard")[0].style.visibility="hidden";
+    clas("user-leaderboard")[0].style.opacity="0";
+    
+    
+    clas("top-learner")[0].style.visibility="hidden";
+    clas("top-learner")[0].style.opacity="0";
+    clas("setting-page")[0].style.visibility="visible";
+    clas("setting-page")[0].style.opacity="1";
+}
 function js_course(e){
     items(e);
     back_course();
@@ -78,6 +112,11 @@ function js_course(e){
     clas("code-coach")[0].style.opacity="0";
     clas("user-leaderboard")[0].style.visibility="hidden";
     clas("user-leaderboard")[0].style.opacity="0";
+    
+    clas("top-learner")[0].style.visibility="hidden";
+    clas("top-learner")[0].style.opacity="0";
+    clas("setting-page")[0].style.visibility="hidden";
+    clas("setting-page")[0].style.opacity="0";
     
 }
 function coach(e){
@@ -94,6 +133,11 @@ function coach(e){
     clas("user-leaderboard")[0].style.visibility="hidden";
     clas("user-leaderboard")[0].style.opacity="0";
     
+    clas("top-learner")[0].style.visibility="hidden";
+    clas("top-learner")[0].style.opacity="0";
+    clas("setting-page")[0].style.visibility="hidden";
+    clas("setting-page")[0].style.opacity="0";
+    
 }
 function leaderboard(e){
     items(e);
@@ -109,6 +153,10 @@ function leaderboard(e){
     clas("course")[0].style.visibility="hidden";
     clas("course")[0].style.opacity="0";
 
+    clas("top-learner")[0].style.visibility="hidden";
+    clas("top-learner")[0].style.opacity="0";
+    clas("setting-page")[0].style.visibility="hidden";
+    clas("setting-page")[0].style.opacity="0";
 }
 
 
@@ -835,41 +883,6 @@ Both animals and the roadrunner's safe place are on a straight line.
             {run: "run('5 5 20')", expected: "Yum", hidden: true},
         ] 
     },
-
-
-
-//Word Rank Js code Coach Problem
-
-{
-        title: "Word Rank",
-        level: "Hard",
-        description: `A word is a sequence of letters A-Z. Rearranging the letters in the word, you can come up with new words, composed of the same letters. 
-For example, the letters in the word TESTING can be rearranged to result in SETTING.
-If we sort all the words made up of the same set of letters alphabetically, we can calculate the rank of each word.
-`,
-        
-        task:`Given a word (not limited to just "dictionary words"), calculate and output its rank among all the words that can be made from the letters of that word. The word can contain duplicate letters.
-`,
-        input_format:`A string, representing a sequence of letters (A-Z).`,
-        output_format:`An integer, representing the rank of the given word.`,
-        input_demo:"ABAB",
-        output_demo:"2",
-        isSolved : false,
-        code: `function rank(input){
-    // your code goes here
-    
-}`,
-        testCases:  [
-            {run: "rank('HELLO)", expected: "13" ,hidden:false},
-            {run: "pi('ABAB')", expected: "2",hidden:false},
-            {run: "pi('SOLOLEARN')", expected: "88196", hidden: true},
-            {run: "pi('HELLO')", expected: "13", hidden: true},
-        ] 
-    },
-
-
-
-
 
  
 //How Far? Js code coach Problem
