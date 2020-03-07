@@ -35,15 +35,39 @@ back.addEventListener("click",function(){
 });
   setTimeout(()=>{ 
     id("loading").classList.add("remove");
-   for(var i=0;i<13;i++){
+   for(var i=0;i<clas("difficulty").length;i++){
    clas("difficulty")[i].innerText=codes[i].level;
 } 
     
    },1000);
+   
+var items = document.getElementsByClassName("item");
+document.getElementById("indicator").style.width = 100/items.length + "%";        
+    for(var i = 0; i<items.length; i++){    
+      if(items[i].id == "active"){
+document.getElementById("indicator").style.left = 100/items.length*i + "%" ;
+      }
+    }      
   
    
 }
-function js_course(){
+function items(e){
+var items = document.getElementsByClassName("item");    
+    for(var i = 0; i<items.length; i++){      
+      items[i].id = ""
+    } 
+    e.id = "active";            
+document.getElementById("indicator").style.width = 100/items.length + "%";        
+    for(var i = 0; i<items.length; i++){     
+      if(items[i].id == "active"){            
+document.getElementById("indicator").style.left = 100/items.length*i + "%" ;
+      }
+    }
+          
+}
+
+function js_course(e){
+    items(e);
     back_course();
     quiz_no =0;
     show_points();
@@ -56,7 +80,8 @@ function js_course(){
     clas("user-leaderboard")[0].style.opacity="0";
     
 }
-function coach(){
+function coach(e){
+    items(e);
     back_course()
     quiz_no =0;
     show_points()
@@ -70,7 +95,8 @@ function coach(){
     clas("user-leaderboard")[0].style.opacity="0";
     
 }
-function leaderboard(){
+function leaderboard(e){
+    items(e);
     back_course()
     quiz_no =0;
     show_points()
@@ -110,7 +136,7 @@ quizhtml.innerHTML+=`
         </div>
         <div>
     <button id="checkButton" onclick="check(${no})">Check</button>
-          <div class="quizzes_result_box"><p>Good for Solving Quizzes</p></div>
+          <div class="quizzes_result_box"><p>Good Luck for Solving Quizzes</p></div>
         </div>
         </main> 
 `;
@@ -305,11 +331,24 @@ function activate_ground(no){
 function show_problem(){
  dom.cases.innerHTML = 
 `<div class="problem-detail">
-<h2 class="heading1">${codes[activeIndex].title}</h2><div class="intro">${codes[activeIndex].description}</div>
-<h3 class="heading2">Task</h3><div class="task">${codes[activeIndex].task}</div>
-<h3 class="heading2">Input Formaat</h3><div class="inputFormat">${codes[activeIndex].input_format}</div>
-<h3 class="heading2">Output Format</h3><div class="outputFormat">${codes[activeIndex].output_format}</div>
-<h3 class="heading2">Input Sample</h3><div class="inputDemo">${codes[activeIndex].input_demo}</div><h3 class="heading2">Output Sample</h3><div class="outputDemo">${codes[activeIndex].output_demo}</div></div><br><br><br><br>`;
+
+<h2 class="heading1">${codes[activeIndex].title}</h2>
+<div class="intro">${codes[activeIndex].description}</div>
+
+<h3 class="heading2">Task</h3>
+<div class="task">${codes[activeIndex].task}</div>
+
+<h3 class="heading2">Input Format</h3>
+<div class="inputFormat">${codes[activeIndex].input_format}</div>
+<h3 class="heading2">Output Format</h3>
+<div class="outputFormat">${codes[activeIndex].output_format}</div>
+
+<h3 class="heading2">Input Sample</h3>
+<div class="inputDemo">${codes[activeIndex].input_demo}</div>
+<h3 class="heading2">Output Sample</h3>
+<div class="outputDemo">${codes[activeIndex].output_demo}</div>
+
+</div><br><br><br><br>`;
  
  
 }
@@ -718,8 +757,161 @@ Space on the casino floor that is not occupied by either money, the thief, or a 
         ] 
     },
 
+//Land Ho! Js Code coach Problem
+
+{
+        title: "Land Ho!",
+        level: "Easy",
+        description: `You are on a large ship and you put down anchor near a beautiful beach. There is a small boat ferrying passengers back and forth, and you get in line for it. How long will you have to wait to get to the beach? You know that 20 people can fit on the boat and each trip to shore takes 10 minutes each way.
+`,
+        
+        task:`Determine your wait time if you know the total number of people ahead of you in line.`,
+        input_format:`An integer that represents the total number of people ahead of you in line.`,
+        output_format:`An integer that represents the number of minutes that you will have to wait until you are standing on the beach.`,
+        input_demo:"15",
+        output_demo:"10",
+        isSolved : false,
+        code: `function landHo(input){
+    // your code goes here
+    
+}`,
+        testCases:  [
+            {run: "landHo(1)", expected: "10" ,hidden:false},
+            {run: "landHo(80)", expected: "90",hidden:false},
+            {run: "landHo(15)", expected: "10", hidden: true},
+        ] 
+    },
+ 
+//Izzy The lgauna Js Code Coach Problem
+
+{
+        title: "Izzy lgauna",
+        level: "Easy",
+        description: `Your pet Iguana has run away, and you found it up in a tree! It will come down right away if you brought the right snacks, but if you don't have enough, you will have to wait. You need 10 total snack points to bring it down. Lettuce is worth 5, Carrot is worth 4, Mango is worth 9, and Cheeseburger is worth 0.
+`,
+        
+        task:`Evaluate whether or not you have enough snack points to convince your iguana to come down.`,
+        input_format:`Your input is a string that represents the snacks that you have. Snacks are separated by spaces, you can have any number of snacks, and they can repeat.
+`,
+        output_format:`A string that says 'Come on Down!' if you have enough points, or 'Time to wait' if you do not.`,
+        input_demo:"Mango Cheeseburger Carrot",
+        output_demo:"Come on Down!",
+        isSolved : false,
+        code: `function izzy(input){
+    // your code goes here
+    
+}`,
+        testCases:  [
+            {run: "izzy('Cheeseburger')", expected: "Time to wait" ,hidden:false},
+            {run: "izzy('Carrot Carrot Carrot')", expected: "Come on Down!",hidden:false},
+            {run: "izzy('Mango')", expected: "Time to wait", hidden: true},
+        ] 
+    },
+ 
+//Road Runner Js Code Coach Problem
+
+
+{
+        title: "Road Runner",
+        level: "Medium",
+        description: `A coyote is chasing a roadrunner and they start out 50 feet apart. If you know how fast they are both traveling, and how far the roadrunner is from safety, determine whether or not the coyote is able to catch the roadrunner. 
+Both animals and the roadrunner's safe place are on a straight line.
+`,
+        
+        task:`Determine whether or not the roadrunner made it to safety.`,
+        input_format:`Three integer values, the first value represents the distance the roadrunner is from safety, then the roadrunner's speed (feet/second) and then the coyote's speed (feet/second).
+`,
+        output_format:`A string that says 'Meep Meep' if the roadrunner made it, or 'Yum' if the coyote caught up to the roadrunner.`,
+        input_demo:"10 5 20",
+        output_demo:"Meep Meep",
+        isSolved : false,
+        code: `function run(input){
+    // your code goes here
+    
+}`,
+        testCases:  [
+            {run: "run('100 5 20')", expected: "Yum" ,hidden:false},
+            {run: "run('10 5 20')", expected: "Meep Meep",hidden:false},
+            {run: "run('5 5 20')", expected: "Yum", hidden: true},
+        ] 
+    },
+
+
+
+//Word Rank Js code Coach Problem
+
+{
+        title: "Word Rank",
+        level: "Hard",
+        description: `A word is a sequence of letters A-Z. Rearranging the letters in the word, you can come up with new words, composed of the same letters. 
+For example, the letters in the word TESTING can be rearranged to result in SETTING.
+If we sort all the words made up of the same set of letters alphabetically, we can calculate the rank of each word.
+`,
+        
+        task:`Given a word (not limited to just "dictionary words"), calculate and output its rank among all the words that can be made from the letters of that word. The word can contain duplicate letters.
+`,
+        input_format:`A string, representing a sequence of letters (A-Z).`,
+        output_format:`An integer, representing the rank of the given word.`,
+        input_demo:"ABAB",
+        output_demo:"2",
+        isSolved : false,
+        code: `function rank(input){
+    // your code goes here
+    
+}`,
+        testCases:  [
+            {run: "rank('HELLO)", expected: "13" ,hidden:false},
+            {run: "pi('ABAB')", expected: "2",hidden:false},
+            {run: "pi('SOLOLEARN')", expected: "88196", hidden: true},
+            {run: "pi('HELLO')", expected: "13", hidden: true},
+        ] 
+    },
+
+
+
+
+
+ 
+//How Far? Js code coach Problem
+
+{
+        title: "How Far?",
+        level: "Medium",
+        description: `You are walking from your house to a pond that is down your street. 
+How many blocks over will you have to walk until you get to the pond?
+`,
+        
+        task:`Evaluate how many blocks you will have to walk if you are given a representation of your street where H represents your house, P represents the pond, and every B represents a block in between the two.`,
+        input_format:`A string of letters representing your house, the pond, and blocks on your street.
+`,
+        output_format:`An integer value that represents the number of blocks between your house and the pond.`,
+        input_demo:"BBHBBBBPBBB",
+        output_demo:"4",
+        isSolved : false,
+        code: `function far(input){
+    // your code goes here
+    
+}`,
+        testCases:  [
+            {run: "far('BBBBHBBPBB')", expected: "2" ,hidden:false},
+            {run: "far('BBHBBBBPBBB')", expected: "4",hidden:false},
+            {run: "far('HBBBBBPB')", expected: "5", hidden: true},
+        ] 
+    },
+
+
+
+
+
+
          
 ];
+
+
+
+
+
+
 
 
 
