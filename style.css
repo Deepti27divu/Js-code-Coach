@@ -51,46 +51,47 @@ body {
     }
 }
 
-.spinner
-{
-animation: rotation 1.35s linear infinite;
+.spinner{
+    animation: rotation 1.35s linear infinite;
 }
 
-@Keyframes rotation
-{
-from{transform: rotate(0);}
-to{transform: rotate(360deg);}
+@Keyframes rotation{
+from{
+    transform: rotate(0);
+ }
+to{
+    transform: rotate(360deg);
+}
 }
 circle
 {
-stroke-dasharray: 180;
-stroke-dashoffset: 0;
-transform-origin: center;
-animation: turn 1.35s ease-in-out infinite;
+    stroke-dasharray: 180;
+    stroke-dashoffset: 0;
+    transform-origin: center;
+    animation: turn 1.35s ease-in-out infinite;
 }
 
-@Keyframes turn
-{
-0%{
-stroke-dashoffset: 180;
-}
+@Keyframes turn{
+    0%{
+    stroke-dashoffset: 180;
+ }
 
-50% {
-stroke-dashoffset: 45;
-transform: rotate(135deg);
-}
+    50% {
+    stroke-dashoffset: 45;
+    transform: rotate(135deg);
+ }
 
 100%{
-stroke-dashoffset: 180;
-transform: rotate(360deg);
+    stroke-dashoffset: 180;
+    transform: rotate(360deg);
 }
 }
 svg{
-stroke:tomato;
-position:absolute;
-left:40%;
-top:40%;
-transform:translate(-50%,-50%);
+    stroke:tomato;
+    position:absolute;
+    left:40%;
+    top:40%;
+    transform:translate(-50%,-50%);
 }
 
 
@@ -132,6 +133,7 @@ transform:translate(-50%,-50%);
         opacity: 1;      
     }
 }
+
 /*Heading*/
 .heading-info{
     font-family: 'Oswald',sans-serif;
@@ -167,7 +169,7 @@ transform:translate(-50%,-50%);
     box-shadow:inset 0px 4px 8px 2px #0000005c;
 }
 
-.code-coach{
+.top-learner,.setting-page,.code-coach{
     height:100vh;
     width:100%;
     overflow-y:scroll;
@@ -177,7 +179,11 @@ transform:translate(-50%,-50%);
     z-index:2;
 }
 
-
+.top-learner,.setting-page{
+    visibility:hidden;
+    opacity:0;
+    background-color:var(--default);
+}
 
 
 
@@ -727,14 +733,14 @@ main > div:last-child{
     height: 40px;
     background-size: cover;
     background-position: center;
-    position: fixed;
+    position:fixed;
     bottom:0px;
     box-shadow: 0 0 20px #0005;
     background-color:lightgrey;
     z-index:8;
 }
 .nav{
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -760,7 +766,7 @@ main > div:last-child{
     width: 100%;
     height: 2px;
     background: var(--default);
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
 }
