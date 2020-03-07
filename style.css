@@ -727,7 +727,7 @@ main > div:last-child{
     height: 40px;
     background-size: cover;
     background-position: center;
-    position: absolute;
+    position: fixed;
     bottom:0px;
     box-shadow: 0 0 20px #0005;
     background-color:lightgrey;
