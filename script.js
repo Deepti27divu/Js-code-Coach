@@ -1,28 +1,795 @@
+var js_intro_course = [
+{
+    name:"Introduction to Javascript",
+    pages:[
+    {
+      heading:"Introduction to Javascript",
+      data:`JavaScript is one of the most popular programming languages on earth and is used to add interactivity to webpages, process data, as well as create various applications (mobile apps, desktop apps, games, and more)`,
+      info:`Learning the fundamentals of a language will enable you to create the program you desire, whether client-side or server-side.`, 
+    },
+    ],
+    
+},
+
+{
+    name:"Create Your First Javascript",
+    pages:[
+    {
+      heading:"Your First Javascript",
+      data:`JavaScript Code can be placed in the HTML page's <body> and <head> sections.
+In the example below, we placed it within the <body> tag using script tag `,
+      info:`Remember that the script, which is placed in the head section, will be executed before the <body> is rendered. If you want to get elements in the body, it's a good idea to place your script at the end of the body tag.`  
+    },
+    {
+     heading: "Formatting Text",
+     data:`We Need to use document.write() for formatting text on webpage. The document.write() function writes a string into our HTML document. This function can be used to write text, HTML, or both`,
+     info:`The document.write() method should be used only for testing. Other output mechanisms appear in the upcoming lessons.`, 
+     code:`document.write("Hello World")
+     //Hello World  
+     `,  
+    },
+    ],
+    
+},
+
+{
+    name:"Adding Javascript to Web Page",
+    pages:[
+    {
+      heading:"Javascript in Head Tag",
+      data:`You can place any number of scripts in an HTML document.
+Typically, the script tag is placed in the head of the HTML document`, 
+      info:`There is also a noscript tag. Its content will be shown if the client's browser doesn't support JS scripts.`, 
+    },
+    {
+      heading:"Javascript in Body Tag",
+      data:`Alternatively, include the JavaScript in the <body> tag.`, 
+      info:`It's a good idea to place scripts at the bottom of the <body> element.
+This can improve page load, because HTML display is not blocked by scripts loading.`,  
+    },
+    ],
+    
+},
+
+{
+    name:"External Javascript",
+    pages:[
+    {
+      heading:"External Javascript",
+      data:`External scripts are useful and practical when the same code is used in a number of different web pages.
+JavaScript files have the file extension .js.
+
+Below, we've created a new text file, and called it demo.js. `,
+      info:`Using External Javascript make your code more readable and easy`, 
+    }],
+    
+},
+
+{
+    name:"Comments In Javascript",
+    pages:[
+    {
+      heading:"Adding Comments",
+      data:`Not all JavaScript statements are "executed".
+      Code after a double slash //, or between /* and */, is treated as a comment.
+Comments are ignored, and are not executed.
+
+Single line comments use double slashes.`,
+     info:`It's a good idea to make a comment about the logic of large functions to make your code more readable for others`,   
+    code:`//This is single Line Comment
+    <br>/*This is Multiple Line comment*/`,
+    },
+    ],
+    
+},
+{
+  name:"Variables" ,
+  pages:[
+  {
+      heading:"Variable in Javascript",
+      data:`Variables are containers for storing data values. The value of a variable can change throughout the program.
+Use the var keyword to declare a variable.
+There are some other rules to follow when naming your JavaScript variables:
+
+- You must not use any special symbols, like my#num, num%, etc.
+- Be sure that you do not use any of the following JavaScript reserved words.
+`,
+      info:`JavaScript is case sensitive. For example, the variables lastName and lastname, are two different variables.`,
+      code:`var x = 10;`,
+  }
+  ],
+},
+{
+    name:"Data Types",
+    pages:[
+    {
+      heading:"Data Types in Javascript",
+      data:`The term data type refers to the types of values with which a program can work. JavaScript variables can hold many data types, such as numbers, strings, arrays, and more.
+
+Unlike many other programming languages, JavaScript does not define different types of numbers, like integers, short, long, floating-point, etc.
+`,    info:`This variable can be easily changed to other types by assigning to it any other data type value, like num = 'some random string'.`, 
+    },
+    {
+     heading:"String In Javascript",
+     data:`As strings must be written within quotes, quotes inside the string must be handled. The backslash (\) escape character turns special characters into string characters.
+   The escape character (\) can also be used to insert other special characters into a string.
+These special characters can be added to a text string using the backslash sign. `, 
+     info:`If you begin a string with a single quote, then you should also end it with a single quote. The same rule applies to double quotes. Otherwise, JavaScript will become confused.`,  
+     code:`var name = "Hello "+"Roni"<br>
+     document.write(name); //Hello Roni`,
+    }
+    ],
+},
+{
+    name:"Math Operators",
+    pages:[
+    {
+        heading:`Arithmetic operators`,
+        data:`Arithmetic operators perform arithmetic functions on numbers (literals or variables).`,
+        info:`You can get the result of a string expression using the eval() function, which takes a string expression argument like eval("10 * 20 + 8") and returns the result. If the argument is empty, it returns undefined.`,
+        code:`var x = 7 + 8; //15`,
+    },
+    {
+        heading:`Division and Multiplication Operators`,
+        data:`The / operator is used to perform division operations.
+       The * operator is used to perform multiplication operators `,
+        info:`Remember to handle cases where there could be a division by 0.`,
+        code:`
+        var x = 10 / 5;
+         //2
+         <br>
+        var y = 10 * 3;
+        //30
+        `,
+    },
+    
+    
+    {
+        heading:`Module Operators`,
+        data:`Module Operators is used to return the reminder of the division(what is left over) `,
+        info:`In JavaScript, the modulus operator is used not only on integers, but also on floating point numbers.`,
+        code:`
+        var x = 10 % 3;
+         //1
+         
+        `,
+    },
+    
+    {
+        heading:`Increment and Decrement Operators`,
+        data:`Increment++  
+The increment operator increments the numeric value of its operand by one. If placed before the operand, it returns the incremented value. If placed after the operand, it returns the original value and then increments the operand.
+Decrement -- 
+The decrement operator decrements the numeric value of its operand by one. If placed before the operand, it returns the decremented value. If placed after the operand, it returns the original value and then decrements the operand. `,
+        info:`As in school mathematics, you can change the order of the arithmetic operations by using parentheses.
+Example: var x = (100 + 50) * 3;`,
+        code:`
+        var x = 10;<br>
+        x++;//11
+         <br>
+        var y = 10;<br>
+        y--;//9
+        `,
+    }, 
+    
+    ]
+},
+
+{
+    name:"Assignment Operators",
+    pages:[
+    {
+      heading:"Assignment Operators",
+      data:`Assignment operators assign values to JavaScript variables. `,
+      info:`You can use multiple assignment operators in one line, such as x -= y += 9.`, 
+      code:`var x = 1;<br>
+      x+=2;//x = 3
+      `,
+    },
+    ],
+    
+},
+{
+    name:"Comparison Operators",
+    pages:[
+    {
+      heading:"Comparison Operators",
+      data:`Comparison operators are used in logical statements to determine equality or difference between variables or values. They return true or false. 
+
+The equal to (==) operator checks whether the operands' values are equal. `,
+     
+      info:`You can check all types of data; comparison operators always return true or false.`, 
+      code:`var x = 10;<br>
+      x==2;//false
+      `,
+    },    
+    
+    ],
+    
+},
+{
+    name:"Logical Or Boolean Operators",
+    pages:[
+    {
+      heading:"Logical Operators",
+      data:`Logical Operators, also known as Boolean Operators, evaluate the expression and return true or false.
+
+The table below explains the logical operators (AND, OR, NOT).
+
+1. && = return true if both value are true
+2. || = return true if one value is true
+3. ! = return true if value is false
+ `,
+      info:`You can check all types of data; comparison operators always return true or false.`, 
+    },
+    
+    {
+        heading:"Logical and Conditonal Operators",
+        data:`For this expression to be true, both conditions must be true.
+- The first condition determines whether 4 is greater than 2, which is true. 
+- The second condition determines whether 10 is less than 15, which is also true. 
+Based on these results, the whole expression is found to be true.
+
+Conditional Operators
+Another JavaScript conditional operator assigns a value to a variable, based on some condition.
+`,
+        info:`It allows you to connect as much conditions as you want`,
+        code:`
+        /*Logical Operators*/
+        <br>
+   document.write((4 > 2) && (10 < 15));
+   <br>//true
+   <br>
+  /*Conditional Operators*/<br>
+   document.write(4>2?"True":"False");
+   <br>//True     
+        
+        `,
+    }
+    ],
+    
+},
+{
+    name:"String Operators",
+    pages:[
+    {
+      heading:"String Operators",
+      data:`The most useful operator for strings is concatenation, represented by the + sign. 
+Concatenation can be used to build strings by joining together multiple strings, or by joining strings with other types: 
+ `,
+      info:`Numbers in quotes are treated as strings: "42" is not the number 42, it is a string that includes two characters, 4 and 2.`, 
+      code:`var msg = "Hello "+"World";<br>
+     document.write(msg) //Hello World
+      `,
+    },
+    ],
+    
+},
+
+{
+    name:"The If Statement",
+    pages:[
+    {
+      heading:"The If Statement",
+      data:`It perform different actions based on different conditions.
+You can do this by using conditional statements in your code.
+
+Use if to specify a block of code that will be executed if a specified condition is true.`,
+      info:`You can skip curly braces if your code under the condition contains only one command.`,
+      code:`
+     if(condition){<br>
+          statements <br>    
+     }<br>
+      `, 
+    },
+    ],
+    
+},
+{
+    name:"The else if else statement ",
+    pages:[
+    {
+      heading:"The else if statement",
+      data:`The Below code says:
+- if course is equal to 1, output "HTML Tutorial";
+- else, if course is equal to 2, output "CSS Tutorial";
+- if none of the above condition is true, then output "JavaScript Tutorial";
+`,
+      info:`Learning the fundamentals of a language will enable you to create the program you desire, whether client-side or server-side.`, 
+      code:`
+      var course = 1<br>
+if (course == 1) {<br>
+    document.write("HTML Tutorial");<br>
+} else if (course == 2) {<br>
+    document.write("CSS Tutorial");
+<br>} else {<br>
+    document.write("JavaScript Tutorial");<br>
+}<br>
+//Output : HTML Tutorial
+      `,
+    },
+    ],
+    
+},
+{
+    name:"The if else if else statement",
+    pages:[
+    {
+      heading:"If else if else statement",
+      data:`The final else block will be executed when none of the conditions is true.            
+Let's take the value of the course variable in our previous example. `,
+      info:`The final else statement "ends" the else if statement and should be always written after the if and else if statements.`, 
+      code:`      
+      var course = 3;<br>
+if (course == 1) {<br>
+    document.write("HTML Tutorial");<br>
+} else if (course == 2) {<br>
+    document.write("CSS Tutorial");<br>
+} else {<br>
+    document.write("JavaScript Tutorial");<br>
+}<br>
+      //Output : JavaScript Tutorial
+      
+      `,
+    },
+    ],
+    
+},
+{
+    name:"Switch statement",
+    pages:[
+    {
+      heading:"Switch Statement",
+      data:`In cases when you need to test for multiple conditions, writing if else statements for each condition might not be the best solution. 
+The switch statement is used to perform different actions based on different conditions.
+The switch expression is evaluated once. The value of the expression is compared with the values of each case. If there is a match, the associated block of code is executed.
+      `,
+      info:`You can achieve the same result with multiple if...else statements, but the switch statement is more effective in such situations.`, 
+      code:`
+ switch (expression) { <br>
+  case n1: <br>
+     statements<br>
+     break;<br>
+  case n2: <br>
+     statements<br>
+     break;<br>
+  default: <br>
+     statements<br>
+}<br>
+      
+      `,
+    },
+    {
+        heading:`The Break Keyword`,
+        data:`When JavaScript code reaches a break keyword, it breaks out of the switch block.
+This will stop the execution of more code and case testing inside the block.`,
+        info:`Usually, a break should be put in each case statement.`,
+    },
+    {
+        heading:`The default Keyword`,
+        data:`The default keyword specifies the code to run if there is no case match.`,
+        info:`The default block can be omitted, if there is no need to handle the case when no match is found.`,
+        code:`
+      var color ="yellow";<br>
+switch(color) {<br>
+    case "blue": <br>
+        document.write("This is blue.");<br>
+        break;<br>
+    case "red": <br>    
+        document.write("This is red.");<br>
+        break;<br>
+    case "green": <br>
+        document.write("This is green."); <br>   
+        break;<br>
+    case "orange": <br> 
+        document.write("This is orange.");<br>    
+        break;<br>
+    default: <br>
+        document.write("Color not found.");<br>
+}  <br>
+//Output : Color not found.
+        
+        
+        `,
+    }
+    ],
+    
+},
+
+{
+    name:"For loop",
+    pages:[
+    {
+      heading:"Loop",
+      data:`Loops can execute a block of code a number of times. They are handy in cases in which you want to run the same code repeatedly, adding a different value each time.
+
+JavaScript has three types of loops: for, while, and do while. 
+
+The for loop is commonly used when creating a loop.
+
+Statement 1 is executed before the loop (the code block) starts.
+Statement 2 defines the condition for running the loop (the code block).
+Statement 3 is executed each time after the loop (the code block) has been executed.
+`,
+      info:`As you can see, the classic for loop has three components, or statements.`,
+      code:`
+      for (statement 1; statement 2; statement 3) {<br>
+   code block to be executed<br>
+}<br>
+      
+      `, 
+    },
+    {
+        heading:`For Loop Part-1`,
+        data:`
+The First example below creates a for loop that prints numbers 1 through 5.         
+        In first Example, Statement 1 sets a variable before the loop starts (var i = 1).
+Statement 2 defines the condition for the loop to run (i must be less than or equal to 5).
+Statement 3 increases a value (i++) each time the code block in the loop has been executed
+
+        `,
+        info:`ES6 introduces other for loop types; you can learn about them in the ES6 course later.`,
+        code:`
+ //First Example Goes from here<br>
+   for (var i=1; i<=5; i++) {<br>
+    document.write(i + " ");<br>
+}   <br>
+//OutPut : 1 2 3 4 5  
+        
+        `,
+    },
+    {
+        heading:`For Loop Part-2`,
+        data:`If statement 2 returns true, the loop will start over again, if it returns false, the loop will end.
+Statement 2 is also optional.
+Statement 3 is used to change the initial variable. It can do anything, including negative increment (i--), positive increment (i = i + 15), or anything else.
+Statement 3 is also optional, and it can be omitted if you increment your values inside the loop. `,
+        info:`If you omit statement 2, you must provide a break inside the loop. Otherwise, the loop will never end.`,
+        code:`
+ var i = 0;<br>
+for (; i < 10; ) {<br>
+    document.write(i);<br>
+    i++;<br>
+}<br>
+        `,
+    },
+    ],
+    
+},
+
+{
+    name:"While loop",
+    pages:[
+    {
+      heading:"While Loop Part-1",
+      data:`The while loop repeats through a block of code, as long as a specified condition is true.
+`,
+      info:`The condition can be any conditional statement that returns true or false.`,
+      code:`
+      while(condition){<br>
+          code block<br>
+      }<br>
+      `, 
+    },
+    {
+        heading:`While Loop Part-2`,
+        data:`The loop will continue to run as long as i is less than, or equal to, 10. Each time the loop runs, it will increase by 1.
+
+This will output the values from 0 to 10. `,
+        info:`Be careful writing conditions. If a condition is always true, the loop will run forever.`,
+        code:`
+var i=0;<br>
+while (i<=10) {<br>
+    document.write(i + " ");<br>
+    i++;<br>
+}<br>
+        `,
+    },
+    {
+        heading:`While Loop Part-3`,
+        data:`If you forget to increase the variable used in the condition, the loop will never end. 
+`,
+        info:`Make sure that the condition in a while loop eventually becomes false.`,
+    },
+    ],
+    
+},
+
+{
+    name:"do while loop",
+    pages:[
+    {
+      heading:"Do While Statement",
+      data:`The do...while loop is a variant of the while loop. This loop will execute the code block once, before checking if the condition is true, and then it will repeat the loop as long as the condition is true.
+`,
+      info:`The loop will always be executed at least once, even if the condition is false, because the code block is executed before the condition is tested.`, 
+      code:`
+     //Syntax <br>
+     do {<br>
+   code block<br>
+}<br>
+while (condition);<br><br>
+     
+     //Example<br> 
+var i=20;<br>
+do {  <br>
+    document.write(i + " ");<br>
+    i++;  <br>
+}<br>
+while (i<=25); <br>     
+      `,
+    },
+    ],
+    
+},
+
+{
+    name:"Break and continue",
+    pages:[
+    {
+      heading:"Break Statement",
+      data:`The break statement "jumps out" of a loop and continues executing the code after the loop.`,
+      info:`You can use the return keyword to return some value immediately from the loop inside of a function. This will also break the loop.`,
+      code:`
+      for (i = 0; i <= 10; i++) {<br>
+    if (i == 5) {<br>
+        break; <br>
+    }<br>
+    document.write(i + " ");<br>
+}<br>
+      `,
+    },
+    {
+        heading:`Continue Statement`,
+        data:`The continue statement breaks only one iteration in the loop, and continues with the next iteration.`,
+        info:`The value 5 is not printed, because continue skips that iteration of the loop.`,
+        code:`
+ for (i = 0; i <= 10; i++) {<br>
+    if (i == 5) {<br>
+        continue;<br>
+    }<br>
+    document.write(i + " ");<br>
+}<br>
+        `,
+    }
+    
+    ],
+    
+},
+
+{
+    name:"User Defined Function",
+    pages:[
+    {
+      heading:"Javascript Function",
+      data:`A JavaScript function is a block of code designed to perform a particular task.
+The main advantages of using functions:
+Code reuse: Define the code once, and use it many times.
+Use the same code many times with different arguments, to produce different results.`,
+      info:`A JavaScript function is executed when "something" invokes, or calls, it.`, 
+    },
+    {
+        heading:`Defining a Function`,
+        data:`To define a JavaScript function, use the function keyword, followed by a name, followed by a set of parentheses ().
+
+The code to be executed by the function is placed inside curly brackets {}.`,
+        info:`Function names can contain letters, digits, underscores, and dollar signs (same rules as variables).`,
+        code:`
+        function name() {   <br> 
+  //code to be executed<br>
+}<br>
+        `,
+    },
+    {
+        heading:`Calling a Function`,
+        data:`To execute the function, you need to call it.
+To call a function, start with the name of the function, then follow it with the arguments in parentheses.
+`,
+        info:`Always remember to end the statement with a semicolon after calling the function.You can also call a function using this syntax: myFunction.call(). The difference is that when calling in this way, you're passing the 'this' keyword to a function. You'll learn about it later.`,
+        code:`
+     function myName() {   <br> 
+  //code to be executed<br>
+}<br>
+   myName();//Function is called 
+        `,
+    },
+    ],
+    
+},
+
+{
+    name:"Function Parameters",
+    pages:[
+    {
+      heading:"Function Parameters Part-1",
+      data:`Functions can take parameters. 
+Function parameters are the names listed in the function's definition.
+`,
+      info:`As with variables, parameters should be given names, which are separated by commas within the parentheses.`,
+      code:`
+      //Syntax <br>
+     functionName(param1,param2,param3){<br>
+         //some code<br>
+     }<br>
+      `, 
+    },
+    {
+        heading:`Using Parameters`,
+        data:`This function takes in one parameter, which is called name. When calling the function, provide the parameter's value (argument) inside the parentheses. 
+`,
+        info:`Function arguments are the real values passed to (and received by) the function.`,
+        code:`
+        function sayHello(name) {<br>
+    alert("Hi, " + name);<br>
+}<br><br>
+
+sayHello("David");<br>
+        `
+    },
+    {
+        heading:`Function Parameters Part-2`,
+        data:`You can define a single function, and pass different parameter values (arguments) to it.`,
+        info:`This will execute the function's code each time for the provided argument.`,
+        code:`
+function sayHello(name) {<br>
+    alert("Hi, " + name);<br>
+}<br>
+sayHello("David");<br>
+sayHello("Sarah");<br>
+sayHello("John");<br> 
+        `
+    },
+    ],
+    
+},
+
+{
+    name:"User Multiple Parameters and Functions",
+    pages:[
+    {
+      heading:"Multiple Parameters Part-1",
+      data:`You can define multiple parameters for a function by comma-separating them. `,
+      info:`The example above defines the function mult to take two parameters.`, 
+      code:`
+     function mult(x,y){<br>
+      //some code<br>   
+     } <br>
+      `,
+    },
+    {
+        heading:`Multiple Parameters Part-2`,
+        data:`The parameters are used within the function's definition.`,
+        info:`Function parameters are the names listed in the function definition`,
+        code:``,
+    },
+    {
+        heading:`Multiple Parameters Part-3`,
+        data:``,
+        info:``,
+        code:``,
+    },
+    {
+        heading:`Multiple Parameters Part-4`,
+        data:``,
+        info:``,
+        code:``,
+    },
+    ],
+    
+},
+
+{
+    name:"The Return Statement",
+    pages:[
+    {
+      heading:"Introduction to Javascript",
+      data:`JavaScript is one of the most popular programming languages on earth and is used to add interactivity to webpages, process data, as well as create various applications (mobile apps, desktop apps, games, and more)`,
+      info:`Learning the fundamentals of a language will enable you to create the program you desire, whether client-side or server-side.`, 
+    },
+    ],
+    
+},
+
+{
+    name:"Alert,Prompt and Confirm",
+    pages:[
+    {
+      heading:"Introduction to Javascript",
+      data:`JavaScript is one of the most popular programming languages on earth and is used to add interactivity to webpages, process data, as well as create various applications (mobile apps, desktop apps, games, and more)`,
+      info:`Learning the fundamentals of a language will enable you to create the program you desire, whether client-side or server-side.`, 
+    },
+    ],
+    
+},
+
+
+
+];
+
+
+
+
 
 //console.log(quiz_data[0].quizzes[3].question_data.options[0].data);
 //🤣😂🤣🤣🤣😂🤣😂
-const dom={};
+const dom = {};
 var editor;
-var activeIndex ;
+var activeIndex;
 var activeQuizIndex;
-var counter =0;
+var counter = 0;
 var solved_problem = [];
-var points=0;
-var easy_problem_points= 10;
-var medium_problem_points=50;
-var hard_problem_points=100;
-var quiz_no=0;
-var quiz_ans ="";
+var points = 0;
+var easy_problem_points = 10;
+var medium_problem_points = 50;
+var hard_problem_points = 100;
+var quiz_no = 0;
+var quiz_ans = "";
 const HIDDEN = `
 <span class="fa fa-lock"></span>
 This test case is hidden
 `;
+var current_page = 0;
+var course_no = 0;
 function id(_){
     return document.getElementById(_);
 }
 function clas(_){
     return document.getElementsByClassName(_);
 }
+
+function js_intro(no){
+    course_no = no;
+    show_points()
+ var coursehtml = clas("course_info")[0]; 
+    coursehtml.innerHTML=" ";
+ var courseName = js_intro_course[no].name;
+  //console.log(quizName);
+  var courseLen = js_intro_course[no].totalPage;
+  var courseData = js_intro_course[no].pages[current_page].data;
+  var courseTip = js_intro_course[no].pages[current_page].info;
+    coursehtml.innerHTML+=` 
+<div class="course_info_header">
+<div class="course_info_name">
+<span class="course_info_back fa fa-angle-left" onclick="back_course()"></span>
+<p class="name_course_info">${courseName}</p>
+</div>
+</div>
+<div class="course_info_data_container">
+</div>
+`;
+
+for(var i = 0;i<js_intro_course[no].pages.length;i++){
+clas("course_info_data_container")[0].innerHTML+=`
+<details class="course_info_details">
+        <summary class="course_info_summary">
+         ${js_intro_course[no].pages[i].heading}
+        </summary>
+        <p class="data">${js_intro_course[no].pages[i].data}
+        </p>
+        <p class="data1">${js_intro_course[no].pages[i].info}</p>        
+        </details>
+`;
+clas("data")[i].innerText=js_intro_course[no].pages[i].data;
+clas("data1")[i].innerText=js_intro_course[no].pages[i].info;
+
+if(js_intro_course[no].pages[i].code){
+clas("data")[i].innerHTML+= `
+<b><code class="cCode">${js_intro_course[no].pages[i].code}</code></b>
+`;
+}
+
+}
+
+  clas("course_info")[0].style.visibility ="visible";
+    clas("course_info")[0].style.opacity ="1";
+    clas("course_quiz_info")[0].style.visibility ="hidden";
+    clas("course_quiz_info")[0].style.opacity ="0";
+    clas("course")[0].style.visibility ="hidden";
+    clas("course")[0].style.opacity ="0";  
+    
+    
+}
+
 window.onload = init;
 function init(){
     var menu = document.querySelector('.menu');
@@ -81,7 +848,7 @@ function top_rankers(e){
     clas("top-learner")[0].style.opacity="1";
     clas("setting-page")[0].style.visibility="hidden";
     clas("setting-page")[0].style.opacity="0";
-    
+    current_page=0;
 }
 
 function setting_page(e){
@@ -99,6 +866,7 @@ function setting_page(e){
     clas("top-learner")[0].style.opacity="0";
     clas("setting-page")[0].style.visibility="visible";
     clas("setting-page")[0].style.opacity="1";
+    current_page=0;
 }
 function js_course(e){
     items(e);
@@ -117,6 +885,7 @@ function js_course(e){
     clas("top-learner")[0].style.opacity="0";
     clas("setting-page")[0].style.visibility="hidden";
     clas("setting-page")[0].style.opacity="0";
+    current_page=0;
     
 }
 function coach(e){
@@ -137,7 +906,7 @@ function coach(e){
     clas("top-learner")[0].style.opacity="0";
     clas("setting-page")[0].style.visibility="hidden";
     clas("setting-page")[0].style.opacity="0";
-    
+    current_page=0;
 }
 function leaderboard(e){
     items(e);
@@ -157,6 +926,7 @@ function leaderboard(e){
     clas("top-learner")[0].style.opacity="0";
     clas("setting-page")[0].style.visibility="hidden";
     clas("setting-page")[0].style.opacity="0";
+    current_page=0;
 }
 
 
@@ -216,6 +986,7 @@ function back_course(){
     clas("course")[0].style.visibility ="visible";
     clas("course")[0].style.opacity ="1";    
     quiz_no =0;
+    current_page=0;
 }
 
 function slctAns(k){
