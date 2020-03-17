@@ -660,19 +660,30 @@ sayHello("John");<br>
         heading:`Multiple Parameters Part-2`,
         data:`The parameters are used within the function's definition.`,
         info:`Function parameters are the names listed in the function definition`,
-        code:``,
+        code:`
+        function sayHello(name, age) {<br>
+  document.write( name + " is " + age + " years old.");<br>
+}<br>
+        `,
     },
     {
         heading:`Multiple Parameters Part-3`,
-        data:``,
-        info:``,
-        code:``,
+        data:`When calling the function, provide the arguments in the same order in which you defined them.`,
+        info:`If you pass more arguments than are defined, they will be assigned to an array called arguments. They can be used like this: arguments[0], arguments[1], etc.`,
+        code:`
+        function sayHello(name, age) {<br>
+    document.write( name + " is " + age + " years old.");<br>
+}<br>
+<br>
+sayHello("John", 20)<br>
+        `,
     },
     {
         heading:`Multiple Parameters Part-4`,
-        data:``,
-        info:``,
-        code:``,
+        data:`After defining the function, you can call it as many times as needed. 
+JavaScript functions do not check the number of arguments received.`,
+        info:`If a function is called with missing arguments (fewer than declared), the missing values are set to undefined, which indicates that a variable has not been assigned a value.`,
+        
     },
     ],
     
@@ -682,10 +693,40 @@ sayHello("John");<br>
     name:"The Return Statement",
     pages:[
     {
-      heading:"Introduction to Javascript",
-      data:`JavaScript is one of the most popular programming languages on earth and is used to add interactivity to webpages, process data, as well as create various applications (mobile apps, desktop apps, games, and more)`,
-      info:`Learning the fundamentals of a language will enable you to create the program you desire, whether client-side or server-side.`, 
+      heading:"Function Return Part-1",
+      data:`A function can have an optional return statement. It is used to return a value from the function. 
+
+This statement is useful when making calculations that require a result.
+`,
+      info:`When JavaScript reaches a return statement, the function stops executing.`, 
     },
+    {
+     heading:`Function Return Part-2`,
+     data:`Use the return statement to return a value.
+
+For example, let's calculate the product of two numbers, and return the result.`,
+     info:`If you do not return anything from a function, it will return undefined.`,
+     code:`
+     function myFunction(a, b) {<br>
+    return a * b;<br>
+}<br>
+
+var x = myFunction(5, 6);<br> 
+document.write(x);<br>
+     `,   
+    },
+    {
+      heading:`Function Return Part-3`,
+     data:`Another Example :-`,
+     info:`The document.write command outputs the value returned by the function, which is the sum of the two parameters.`,
+     code:`
+     function addNumbers(a, b) {<br>
+    var c = a+b;<br>
+    return c;<br>
+}<br>
+document.write( addNumbers(40, 2) );<br>
+     `,     
+    }
     ],
     
 },
@@ -694,9 +735,758 @@ sayHello("John");<br>
     name:"Alert,Prompt and Confirm",
     pages:[
     {
-      heading:"Introduction to Javascript",
-      data:`JavaScript is one of the most popular programming languages on earth and is used to add interactivity to webpages, process data, as well as create various applications (mobile apps, desktop apps, games, and more)`,
-      info:`Learning the fundamentals of a language will enable you to create the program you desire, whether client-side or server-side.`, 
+      heading:"Alert Box",
+      data:`JavaScript offers three types of popup boxes, the Alert, Prompt, and Confirm boxes.
+
+Alert Box
+An alert box is used when you want to ensure that information gets through to the user.
+When an alert box pops up, the user must click OK to proceed.
+The alert function takes a single parameter, which is the text displayed in the popup box.`,
+      info:`Be careful when using alert boxes, as the user can continue using the page only after clicking OK.`, 
+      code:`
+   alert("Hello World"); 
+     `,
+    },
+    {
+        heading:`Prompt Box`,
+        data:`A prompt box is often used to have the user input a value before entering a page.
+When a prompt box pops up, the user will have to click either OK or Cancel to proceed after entering the input value.
+If the user clicks OK, the box returns the input value. If the user clicks Cancel, the box returns null.
+
+The prompt() method takes two parameters. 
+- The first is the label, which you want to display in the text box.
+- The second is a default string to display in the text box (optional).`,
+        info:`When a prompt box pops up, the user will have to click either "OK" or "Cancel" to proceed after entering an input value. Do not overuse this method, because it prevents the user from accessing other parts of the page until the box is closed`,
+        code:`
+   var name = prompt("Enter your name");<br>
+   alert(name);
+        `,
+    },
+    {
+        heading:`Confirm Box`,
+        data:`A confirm box is often used to have the user verify or accept something.
+When a confirm box pops up, the user must click either OK or Cancel to proceed.
+If the user clicks OK, the box returns true. If the user clicks Cancel, the box returns false.`,
+        info:`Do not overuse this method, because it also prevents the user from accessing other parts of the page until the box is closed.`,
+        code:`
+       var result = confirm("Do you really want to leave this page?");<br>
+if (result == true) {<br>
+    alert("Thanks for visiting");<br>
+}<br>
+else {<br>
+    alert("Thanks for staying with us");<br>
+}<br> 
+        `,
+    },
+    ],
+    
+},
+
+{
+    name:"Introducing Object",
+    pages:[
+    {
+      heading:"Javascript Object",
+      data:`JavaScript variables are containers for data values. Objects are variables too, but they can contain many values.
+
+Think of an object as a list of values that are written as name:value pairs, with the names and the values separated by colons.`,
+      info:`JavaScript objects are containers for named values.`,
+      code:`
+     var person = {<br>
+ name: "John", age: 31, <br>
+ favColor: "green", height: 183<br>
+}; <br>
+      `, 
+    },
+    {
+       heading:`Object properties`,
+       data:`You can access object properties in two ways.
+  This example demonstrates how to access the age of our person object.
+
+ JavaScript's built-in length property is used to count the number of characters in a property or string.`,
+       info:`Objects are one of the core concepts in JavaScript.`,
+       code:`
+       objectName.propertyName<br>
+//or<br>
+objectName['propertyName']<br><br><br>
+
+
+//First <br>
+var person = {<br>
+    name: "John", age: 31,<br> 
+    favColor: "green", height: 183<br>
+};<br>
+var x = person.age;<br>
+var y = person['age'];<br>
+
+document.write(x);<br>
+document.write(y);<br><br><br>
+
+//Second<br>
+var course = {name: "JS", lessons: 41};<br>
+document.write(course.name.length);<br>
+       `,        
+    },
+    {
+       heading:`Object Methods`,
+       data:`An object method is a property that contains a function definition.
+
+Use the following syntax to access an object method.
+As you already know, document.write() outputs data. The write() function is actually a method of the document object. 
+`,
+       info:`Methods are functions that are stored as object properties.`,
+       code:`
+       //Syntax<br>
+objectName.methodName()<br><br>
+
+//Code<br>
+document.write("This is some text");<br>
+       `,        
+    },
+    ],
+    
+},
+
+{
+    name:"Create Your Own Object",
+    pages:[
+    {
+      heading:"The Object Constructor",
+      data:`In the previous lesson, we created an object using the object literal (or initializer) syntax.
+This allows you to create only a single object.
+Sometimes, we need to set an "object type" that can be used to create a number of objects of a single type.
+The standard way to create an "object type" is to use an object constructor function. 
+The above function (person) is an object constructor, which takes parameters and assigns them to the object properties.       
+      `,
+      info:`The this keyword refers to the current object.
+Note that this is not a variable. It is a keyword, and its value cannot be changed.`,
+     code:`
+     //Initilize Syntax
+    var person = {<br>
+name: "John", age: 42, favColor: "green"<br>
+};<br>
+<br>
+//Constructor <br>
+function person(name, age, color) {<br>
+  this.name = name;<br>
+  this.age = age;<br>
+  this.favColor = color;<br>
+}<br>
+
+     `, 
+    },
+    {
+       heading:`Creating Objects Part-1`,
+       data:`Once you have an object constructor, you can use the new keyword to create new objects of the same type.`,
+       info:`p1 and p2 are now objects of the person type. Their properties are assigned to the corresponding values.`,
+       code:`
+function person(name, age, color) {<br>
+    this.name = name;<br>
+    this.age = age;<br>
+    this.favColor = color;<br>
+}<br>
+<br>
+var p1 = new person("John", 42, "green");<br>
+var p2 = new person("Amy", 21, "red");<br>
+<br>
+document.write(p1.age); <br>
+document.write(p2.name);<br>
+       `,        
+    },
+    {
+       heading:`Creating Objects Part-2`,
+       data:`
+ Consider the Following Example:- 
+
+Access the object's properties by using the dot syntax, as you did before. 
+`,
+
+       info:`Understanding the creating of Objects in essential`,
+       code:`
+       function person (name, age) {<br>
+    this.name = name;<br>
+    this.age = age;<br>
+}<br>
+var John = new person("John", 25);<br>
+var James = new person("James", 21);<br>
+<br>
+document.write(John.age);<br>
+       `,        
+    },
+    ],
+    
+},
+
+{
+    name:"Object Initialization",
+    pages:[
+    {
+      heading:"Object Initialization",
+      data:`Use the object literal or initializer syntax to create single objects.`,
+      info:`Objects consist of properties, which are used to describe an object. Values of object properties can either contain primitive data types or other objects.`, 
+      code:`
+      var John = {name: "John", age: 25};<br>
+var James = {name: "James", age: 21};<br>
+      `,
+    },
+    {
+       heading:`Using Object initializer`,
+       data:`Spaces and line breaks are not important. An object definition can span multiple lines.
+No matter how the object is created, the syntax for accessing the properties and methods does not change.       
+       `,
+       info:`Don't forget about the second accessing syntax: John['age'].`,
+       code:`
+      var John = {<br>
+    name: "John",<br>
+    age: 25<br>
+};<br>
+var James = {<br>
+    name: "James",<br>
+    age: 21
+};<br>
+<br>
+document.write(John.age);<br> 
+       `,        
+    },
+    ],
+    
+},
+
+{
+    name:"Adding Object Methods",
+    pages:[
+    {
+      heading:"Methods Part-1",
+      data:`Methods are functions that are stored as object properties. 
+
+Use the following syntax to create an object method.
+
+A method is a function, belonging to an object. It can be referenced using the this keyword.
+The this keyword is used as a reference to the current object, meaning that you can access the objects properties and methods using it.
+
+Defining methods is done inside the constructor function.
+
+In the example above, we have defined a method named changeName for our person, which is a function, that takes a parameter name and assigns it to the name property of the object. 
+this.name refers to the name property of the object.
+`,
+      info:`The changeName method changes the object's name property to its argument.`, 
+      code:`
+      //Syntax<br>
+methodName = function() { code lines }<br>
+<br>
+<br>
+//Example<br>
+function person(name, age) {<br>
+    this.name = name; <br> 
+    this.age = age;<br>
+    this.changeName = function (name) {<br>
+        this.name = name;<br>
+    }<br>
+}<br>
+<br>
+var p = new person("David", 21);<br>
+p.changeName("John");<br>
+<br>
+document.write(p.name);<br>      
+      `,
+    },
+    {
+       heading:`Methods Part-2`,
+       data:`You can also define the function outside of the constructor function and associate it with the object.
+As you can see, we have assigned the object's yearOfBirth property to the bornYear function.
+The this keyword is used to access the age property of the object, which is going to call the method.
+`,
+       info:`Note that it's not necessary to write the function's parentheses when assigning it to an object.`,
+       code:`
+   function person(name, age) {<br>
+  this.name= name; <br> 
+  this.age = age;<br>
+  this.yearOfBirth = bornYear;<br>
+}<br>
+function bornYear() {<br>
+  return 2016 - this.age;<br>
+}    <br>
+       `,        
+    },
+    {
+       heading:`Methods Part-3`,
+       data:`Call method as usual`,
+       info:`Call the method by the property name you specified in the constructor function, rather than the function name.`,
+       code:`
+    function person(name, age) {<br>
+    this.name= name;<br>
+    this.age = age;<br>
+    this.yearOfBirth = bornYear;<br>
+}<br>
+function bornYear() {<br>
+    return 2016 - this.age;<br>
+}<br>
+<br>
+var p = new person("A", 22);<br>
+<br>
+document.write(p.yearOfBirth());<br>         
+       `,        
+    },
+    ],
+    
+},
+
+{
+    name:"Array",
+    pages:[
+    {
+      heading:"Arrays in Javascript",
+      data:`Arrays store multiple values in a single variable. 
+
+To store three course names, you need three variables.
+But what if you had 500 courses? The solution is an array.
+`,
+      info:`This syntax declares an array named courses, which stores three values, or elements.`, 
+      code:`
+     var courses = new Array("HTML", "CSS", "JS"); 
+      `,
+    },
+    {
+     heading:`Accessing in arrays Part-1`,
+     data:`You refer to an array element by referring to the index number written in square brackets.
+This statement accesses the value of the first element in courses and changes the value of the second element. `,
+     info:`[0] is the first element in an array. [1] is the second. Array indexes start with 0.`,   
+     code:`var courses = new Array("HTML", "CSS", "JS"); <br>
+var course = courses[0]; // HTML<br>
+courses[1] = "C++"; //Changes the second element
+<br>
+`,
+    },
+    {
+     heading:`Accessing in arrays Part-2`,
+     data:`Attempting to access an index outside of the array, returns the value undefined.`,
+     info:`Our courses array has just 3 elements, so the 10th index, which is the 11th element, does not exist (is undefined).`,
+     code:`
+     var courses = new Array("HTML", "CSS", "JS");<br>
+document.write(courses[10]);<br>
+     `,   
+    },
+    ],
+    
+},
+
+
+{
+    name:"Other Ways to create Arrays",
+    pages:[
+    {
+      heading:"Creating Arrays Part-1",
+      data:`You can also declare an array, tell it the number of elements it will store, and add the elements later.`,
+      info:`An array is a special type of object.
+An array uses numbers to access its elements, and an object uses names to access its members.`, 
+      code:`
+var courses = new Array(3);<br>
+courses[0] = "HTML";<br>
+courses[1] = "CSS";<br>
+courses[2] = "JS";<br><br>
+
+document.write(courses[2]);<br> 
+      `,
+    },
+    {
+        heading:`Creating Arrays Part-2`,
+        data:`
+JavaScript arrays are dynamic, so you can declare an array and not pass any arguments with the Array() constructor. You can then add the elements dynamically.
+
+Array literal:-
+For greater simplicity, readability, and execution speed, you can also declare arrays using the array literal syntax.
+
+
+`,
+        info:`You can access and modify the elements of the array using the index number, as you did before.
+The array literal syntax is the recommended way to declare arrays.`,
+        code:`
+var courses = new Array();<br>
+courses[0] = "HTML";<br>
+courses[1] = "CSS";<br>
+courses[2] = "JS";<br>
+courses[3] = "C++";<br>
+
+document.write(courses[2]);<br>        
+
+<br>//Array literal<br>
+var courses = ["HTML", "CSS", "JS"];<br> 
+
+document.write(courses[2]);<br>
+
+        `,
+    },
+    ],
+    
+},
+
+
+{
+    name:"Array Methods and Properties",
+    pages:[
+    {
+      heading:"The length Property",
+      data:`JavaScript arrays have useful built-in properties and methods.
+
+An array's length property returns the number of it's elements.`,
+      info:`The length property is always one more than the highest array index.
+If the array is empty, the length property returns 0.`, 
+      code:`
+      var courses = ["HTML", "CSS", "JS"];<br>
+document.write(courses.length);<br>
+      `,
+    },
+    {
+        heading:`Combining Property`,
+        data:`JavaScript's concat() method allows you to join arrays and create an entirely new array.
+The courses array that results contains 4 elements (HTML, CSS, JS, C++).
+        `,
+        info:`
+The concat operation does not affect the c1 and c2 arrays - it returns the resulting concatenation as a new array.`,
+        code:`
+        var c1 = ["HTML", "CSS"];<br>
+var c2 = ["JS", "C++"];<br>
+var courses = c1.concat(c2);<br>
+
+document.write(courses[2]);<br>
+        `,
+    },
+    ],
+    
+},
+
+
+{
+    name:"Associative Array",
+    pages:[
+    {
+      heading:"Associative arrays Part-1",
+      data:`While many programming languages support arrays with named indexes (text instead of numbers), called associative arrays, JavaScript does not.
+However, you still can use the named array syntax, which will produce an object.
+Now, person is treated as an object, instead of being an array.
+The named indexes "name" and "age" become properties of the person object.
+
+`,
+      info:`As the person array is treated as an object, the standard array methods and properties will produce incorrect results. For example, person.length will return 0.`, 
+      code:`
+      var person = []; //empty array<br>
+person["name"] = "John";<br>
+person["age"] = 46;<br>
+document.write(person["age"]);<br>
+      `,
+    },
+    {
+        heading :`Associative arrays Part-2`,
+        data:`Remember that JavaScript does not support arrays with named indexes.
+In JavaScript, arrays always use numbered indexes.
+It is better to use an object when you want the index to be a string (text).
+Use an array when you want the index to be a number.
+`,
+        info:`If you use a named index, JavaScript will redefine the array to a standard object.`,
+        
+    },
+    ],
+    
+},
+
+
+
+{
+    name:"The Math Object",
+    pages:[
+    {
+      heading:"Math Object Part-1",
+      data:`The Math object allows you to perform mathematical tasks, and includes several properties. `,
+      info:`Math has no constructor. There's no need to create a Math object first.`, 
+      code:`
+    document.write(Math.PI);<br>
+//Outputs 3.141592653589793 <br> 
+      `,
+    },
+    {
+        heading:`Math Object Methods`,
+        data:`The Math object contains a number of methods that are used for calculations.
+        
+For example, the following will calculate the square root of a number.
+`,
+        info:`To get a random number between 1-10, use Math.random(), which gives you a number between 0-1. Then multiply the number by 10, and then take Math.ceil() from it:  Math.ceil(Math.random() * 10).`,
+        code:`
+       var number = Math.sqrt(4);<br> 
+document.write(number);<br>
+//Outputs 2 <br>
+        `,
+    },
+    {
+        heading:`Math Object Part-2`,
+        data:`Let's create a program that will ask the user to input a number and alert its square root.`,
+        info:`Math is a handy object. You can save a lot of time using Math, instead of writing your own functions every time.`,
+        code:`
+        var n = prompt("Enter a number", "");<br>
+var answer = Math.sqrt(n);<br>
+alert("The square root of " + n + " is " + answer);<br>
+        `,
+    },
+    ],
+    
+},
+
+{
+    name:"The Date Object",
+    pages:[
+    {
+      heading:"Set Interval",
+      data:`The setInterval() method calls a function or evaluates an expression at specified intervals (in milliseconds).
+It will continue calling the function until clearInterval() is called or the window is closed.
+This will call the myAlert function every 3 seconds (1000 ms = 1 second).
+`,
+      info:`Write the name of the function without parentheses when passing it into the setInterval method. `, 
+      code:`
+      function myAlert() {<br>
+    alert("Hi");<br>
+}<br>
+setInterval(myAlert, 3000);<br>
+`,
+    },
+    {
+     heading:`Date Object`,
+     data:`The Date object enables us to work with dates.
+A date consists of a year, a month, a day, an hour, a minute, a second, and milliseconds.
+
+Using new Date(), create a new date object with the current date and time.
+
+The other ways to initialize dates allow for the creation of new date objects from the specified date and time.
+`,
+     info:`JavaScript counts months from 0 to 11. January is 0, and December is 11.
+Date objects are static, rather than dynamic. The computer time is ticking, but date objects don't change, once created.`,
+     code:`
+    //Syntax <br>
+     var d = new Date();<br>
+//d stores the current date and time<br>
+new Date(milliseconds)<br>
+new Date(dateString)<br>
+new Date(year, month, day, hours, minutes, seconds, milliseconds)<br>
+<br>
+//Example <br>
+var d1 = new Date(86400000); 
+<br>
+//Fri Jan 02 2015 10:42:00<br>
+var d2 = new Date("January 2, 2015 10:42:00");
+<br>
+//Sat Jun 11 1988 11:42:00<br>
+var d3 = new Date(88,5,11,11,42,0,0);<br>
+     `,   
+    },
+    {
+     heading:`Date Methods`,
+     data:`When a Date object is created, a number of methods make it possible to perform operations on it.
+We declared a function printTime(), which gets the current time from the date object, and prints it to the screen.
+We then called the function once every second, using the setInterval method.  
+Lets create a program that print Current time every second   
+     `,
+     info:`The innerHTML property sets or returns the HTML content of an element.
+In our case, we are changing the HTML content of our document's body. This overwrites the content every second, instead of printing it repeatedly to the screen.`,
+     code:`
+     function printTime() {<br>
+    var d = new Date();<br>
+    var hours = d.getHours();<br>
+    var mins = d.getMinutes();<br>
+    var secs = d.getSeconds();<br>
+    document.body.innerHTML = hours+":"+mins+":"+secs;<br>
+}<br>
+setInterval(printTime, 1000);<br>
+     
+     `,   
+    },
+    ],
+    
+},
+{
+    name:"What is DOM?",
+    pages:[
+    {
+      heading:"The DOM",
+      data:`When you open any webpage in a browser, the HTML of the page is loaded and rendered visually on the screen.
+To accomplish that, the browser builds the Document Object Model of that page, which is an object oriented model of its logical structure.
+The DOM of an HTML document can be represented as a nested set of boxes `,
+      info:`JavaScript can be used to manipulate the DOM of a page dynamically to add, delete and modify elements.`, 
+    },
+    {
+      heading:`The document Object`,
+      data:`There is a predefined document object in JavaScript, which can be used to access all elements on the DOM.
+In other words, the document object is the owner (or root) of all objects in your webpage.
+So, if you want to access objects in an HTML page, you always start with accessing the document object.
+As body is an element of the DOM, we can access it using the document object and change the content of the innerHTML property.`,
+      info:`The innerHTML property can be used on almost all HTML elements to change its content.`,
+    },
+    ],
+    
+},
+
+{
+    name:"Selecting Elements",
+    pages:[
+    {
+      heading:"Selecting Elements Part-1",
+      data:`All HTML elements are objects. And as we know every object has properties and methods.
+The document object has methods that allow you to select the desired HTML element.
+These three methods are the most commonly used for selecting HTML elements
+In the example below, the getElementById method is used to select the element with id="demo" and change its content
+`,
+      info:`The example above assumes that the HTML contains an element with id="demo", for example <div id="demo"></div>.`, 
+      code:`
+    //Syntax<br>
+ //finds element by id<br>
+document.getElementById(id)<br><br> 
+
+//finds elements by class name<br>
+document.getElementsByClassName(name) <br>
+<br>
+//finds elements by tag name<br>
+document.getElementsByTagName(name) <br>  
+
+<br>
+//Example<br> 
+var elem = document.getElementById("demo");<br>
+elem.innerHTML = "Hello World!";<br>
+      `,
+    },
+    {
+       heading:`Selecting Elements Part-2`,
+       data:`The getElementsByClassName() method returns a collection of all elements in the document with the specified class name.
+For example, if our HTML page contained three elements with class="demo", the following code would return all those elements as an array
+
+Similarly, the getElementsByTagName method returns all of the elements of the specified tag name as an array.
+The following example gets all paragraph elements of the page and changes their content `,
+       info:`We used the length property of the array to loop through all the selected elements in the above example.`,
+       code:`
+ var arr =  document.getElementsByClassName("demo");<br>
+//accessing the second element<br>
+arr[1].innerHTML = "Hi";<br>
+     <br> 
+/*accessing all the p tags
+( consider there are three p tags)*/<br>
+var arr = document.getElementsByTagName("p");<br>
+for (var x = 0; x < arr.length; x++) {<br>
+  arr[x].innerHTML = "Hi there";<br>
+}<br>
+       
+       `, 
+    },
+    {
+       heading:`Working With DOM`,
+       data:`
+Each element in the DOM has a set of properties and methods that provide information about their relationships in the DOM:
+element.childNodes returns an array of an element's child nodes.
+element.firstChild returns the first child node of an element.
+element.lastChild returns the last child node of an element.
+element.hasChildNodes returns true if an element has any child nodes, otherwise false.
+element.nextSibling returns the next node at the same tree level.
+element.previousSibling returns the previous node at the same tree level.
+element.parentNode returns the parent node of an element.
+
+We can, for example, select all child nodes of an element and change their content.
+
+Consider we have two pages inside in a div whose class is demo.
+Lets try to access the p tags       
+       `,
+       info:`The code above changes the text of both paragraphs to "new text".`,
+       code:`
+   var a = document.getElementById("demo");<br>
+     var arr = a.childNodes;<br>
+     for(var x=0;x<arr.length;x++) {<br>
+       arr[x].innerHTML = "new text";<br>
+     } <br>    
+       `, 
+    },
+    ],
+    
+},
+{
+    name:"Selecting Elements",
+    pages:[
+    {
+      heading:"Changing Attribute",
+      data:`Once you have selected the element(s) you want to work with, you can change their attributes. 
+As we have seen in the previous lessons, we can change the text content of an element using the innerHTML property.
+Similarly, we can change the attributes of elements.
+For example, we can change the src attribute of an image`,
+      info:`Practically all attributes of an element can be changed using JavaScript. `, 
+      code:`
+    var el = document.getElementById("myimg");
+el.src = "apple.png";<br>
+      `,
+    },
+    {
+       heading:`Changing Style`,
+       data:`The style of HTML elements can also be changed using JavaScript.
+All style attributes can be accessed using the style object of the element. 
+`,
+       info:`All CSS properties can be set and modified using JavaScript. Just remember, that you cannot use dashes (-) in the property names: these are replaced with camelCase versions, where the compound words begin with a capital letter. 
+For example: the background-color property should be referred to as backgroundColor.`,
+       code:`
+var x = document.getElementById("demo");<br>
+  x.style.color = "6600FF";<br>
+  x.style.width = "100px";<br>
+       
+       `, 
+    },
+    ],
+    
+},
+{
+    name:"Adding or Removing Elements",
+    pages:[
+    {
+      heading:"Creating Elements",
+      data:`Use the following methods to create new nodes:
+element.cloneNode() clones an element and returns the resulting node.
+document.createElement(element) creates a new element node. 
+document.createTextNode(text) creates a new text node.
+
+This will create a new text node, but it will not appear in the document until you append it to an existing element with one of the following methods:
+element.appendChild(newNode) adds a new child node to an element as the last child node.
+element.insertBefore(node1, node2) inserts node1 as a child before node2.
+`,
+      info:`This creates a new paragraph and adds it to the existing div element on the page. `, 
+      code:`
+  //creating a new paragraph<br>
+  var p = document.createElement("p");<br>
+  var node = document.createTextNode("Some new text");<br>
+  //adding the text to the paragraph<br>
+  p.appendChild(node);<br>
+<br>
+<br>  
+  //adding the paragraph to the body<br>
+  document.body.appendChild(p);<br>
+      `,
+    },
+    {
+        heading:`Removing Elements`,
+        data:`To remove an HTML element, you must select the parent of the element and use the removeChild(node) method.`,
+        info:`An alternative way of achieving the same result would be the use of the parentNode property to get the parent of the element we want to remove:
+var child = document.getElementById("p1");
+child.parentNode.removeChild(child);`,
+        code:`
+
+//This rempves the id= p1 from class= demo<br>
+var parent = document.getElementById("demo");<br>
+var child = document.getElementById("p1");<br>
+parent.removeChild(child);        <br>
+        `,
+    },
+    {
+        heading:`Replacing Elements`,
+        data:`To replace an HTML element, the element.replaceChild(newNode, oldNode) method is used.`,
+        info:`The code above creates a new paragraph element that replaces the existing p1 paragraph.`,
+        code:`
+ var p = document.createElement("p");<br>
+var node = document.createTextNode("This is new");<br>
+p.appendChild(node);<br>
+<br>
+var parent = document.getElementById("demo");<br>
+var child = document.getElementById("p1");<br>
+parent.replaceChild(p, child);<br>
+`,
     },
     ],
     
@@ -708,6 +1498,9 @@ sayHello("John");<br>
 
 
 
+//firebase 
+var db;
+var dbRef;
 
 
 //console.log(quiz_data[0].quizzes[3].question_data.options[0].data);
@@ -730,11 +1523,73 @@ This test case is hidden
 `;
 var current_page = 0;
 var course_no = 0;
+
 function id(_){
     return document.getElementById(_);
 }
 function clas(_){
     return document.getElementsByClassName(_);
+}
+
+function loginUser(){
+ clas("formContainer")[0].style.visibility="visible";
+ clas("formContainer")[0].style.opacity="1";
+clas("formContainer1")[0].style.visibility="hidden";
+ clas("formContainer1")[0].style.opacity="0";
+
+}
+function registerUser(){
+ clas("formContainer1")[0].style.visibility="visible";
+ clas("formContainer1")[0].style.opacity="1";
+clas("formContainer")[0].style.visibility="hidden";
+ clas("formContainer")[0].style.opacity="0";
+     
+}
+
+function login(){
+    clas("formContainer")[0].style.visibility="hidden";
+ clas("formContainer")[0].style.opacity="0";
+clas("formContainer1")[0].style.visibility="hidden";
+ clas("formContainer1")[0].style.opacity="0";
+}
+function registr(){
+    clas("formContainer")[0].style.visibility="hidden";
+ clas("formContainer")[0].style.opacity="0";
+clas("formContainer1")[0].style.visibility="hidden";
+ clas("formContainer1")[0].style.opacity="0";
+ 
+var name = clas("userRegisterName")[0].value;
+var pasword = clas("userRegisterPassword")[0].value;
+
+
+//Register
+if(name && pasword){
+if(!registrUsers.includes(name)){
+var ref = db.ref("/users/"+name);
+var data = {
+   points : 0,
+   password: pasword, 
+};
+ref.set(data);
+}
+else{
+    alert("Cant Register");
+}
+
+}
+
+
+
+
+
+}
+
+
+function closeRegistrLoginForm(){
+    clas("formContainer")[0].style.visibility="hidden";
+ clas("formContainer")[0].style.opacity="0";
+clas("formContainer1")[0].style.visibility="hidden";
+ clas("formContainer1")[0].style.opacity="0";
 }
 
 function js_intro(no){
@@ -789,7 +1644,7 @@ clas("data")[i].innerHTML+= `
     
     
 }
-
+let registrUsers= [];
 window.onload = init;
 function init(){
     var menu = document.querySelector('.menu');
@@ -816,6 +1671,27 @@ document.getElementById("indicator").style.left = 100/items.length*i + "%" ;
       }
     }      
   
+
+ firebase.initializeApp({
+      databaseURL: "https://fir-app-4ea60.firebaseio.com"
+  });     
+  
+db = firebase.database();
+dbRef = db.ref("users/");
+
+  
+// registrUsers= [];
+
+dbRef.on("value",(data)=>{
+var key = data.val();
+let keys = Object.keys(key);
+registrUsers = keys;
+for(var i = 0;i<keys.length;i++){
+    var k = keys[i];
+   // console.log(key[k].points)
+   // console.log(key[k].password)
+}
+});    
    
 }
 function items(e){
@@ -867,6 +1743,17 @@ function setting_page(e){
     clas("setting-page")[0].style.visibility="visible";
     clas("setting-page")[0].style.opacity="1";
     current_page=0;
+    
+    setTimeout(()=>{
+    clas("setting-page")[0].innerHTML=" ";  
+    clas("setting-page")[0].innerHTML+=`
+    <div class="setting-container">
+    <center><h2 class="lgn">Login/Register</h2></center>
+    <button onclick="loginUser()" class="login-btn">Login</button>
+    <button onclick="registerUser()" class="register-btn">Register</button>
+    </div>
+    `;
+    },500);
 }
 function js_course(e){
     items(e);
