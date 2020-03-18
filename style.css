@@ -800,6 +800,7 @@ main > div:last-child{
     padding:0.5em;
     display:block;
     text-align:left;
+    overflow-x:scroll;
 }
 summary{
     outline:none;
