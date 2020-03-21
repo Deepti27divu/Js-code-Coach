@@ -1,9 +1,7 @@
 
-
 //firebase 
 var db;
 var dbRef;
-
 
 //console.log(quiz_data[0].quizzes[3].question_data.options[0].data);
 //🤣😂🤣🤣🤣😂🤣😂
@@ -13,7 +11,7 @@ var activeIndex;
 var activeQuizIndex;
 var counter = 0;
 var solved_problem = [];
-var points = 0;
+var points = 10;
 var easy_problem_points = 10;
 var medium_problem_points = 50;
 var hard_problem_points = 100;
@@ -25,6 +23,12 @@ This test case is hidden
 `;
 var current_page = 0;
 var course_no = 0;
+let lgUsers= []
+let rname = " ";
+var evt_id = "";
+var win_song = new Audio("https://raw.githubusercontent.com/EdwardDunn/Platform-Game/master/Audio/win_sound.wav");
+var  lose_song = new Audio("https://raw.githubusercontent.com/EdwardDunn/Platform-Game/master/Audio/gameover.wav"); 
+
 
 function id(_){
     return document.getElementById(_);
@@ -32,12 +36,24 @@ function id(_){
 function clas(_){
     return document.getElementsByClassName(_);
 }
+function swal(txt){
+var id = document.getElementById("toast_msg");
+id.innerHTML = txt;
+id.style.display = "block";
+setTimeout(()=>{
+id.style.display = "none";
+},2000);
+
+}
+
+
 
 function loginUser(){
  clas("formContainer")[0].style.visibility="visible";
  clas("formContainer")[0].style.opacity="1";
 clas("formContainer1")[0].style.visibility="hidden";
  clas("formContainer1")[0].style.opacity="0";
+
 
 }
 function registerUser(){
@@ -48,38 +64,132 @@ clas("formContainer")[0].style.visibility="hidden";
      
 }
 
+
+function changeTheme(){
+var themeclr = clas("theme-color")[0].value;
+var otherclr = clas("other-color")[0].value;
+//console.log(themeclr,otherclr);
+document.documentElement.style .setProperty('--theme', themeclr);
+document.documentElement.style .setProperty('--other', otherclr); 
+ swal("Theme Changed");   
+}
+
+function signout(){
+clas("setting-lg")[0].style.visibility="visible";
+clas("setting-lg")[0].style.opacity="1";
+swal("SignOut Sucessfully!");  
+
+}
+
 function login(){
+var name = clas("userLoginName")[0].value;
+var password = clas("userLoginPassword")[0].value;
+if(name && password){
     clas("formContainer")[0].style.visibility="hidden";
  clas("formContainer")[0].style.opacity="0";
 clas("formContainer1")[0].style.visibility="hidden";
  clas("formContainer1")[0].style.opacity="0";
+if(registrUsers.includes(name)){
+rname = name;
+var ref = db.ref("/users/"+rname); 
+ref.on("value",function(data){
+ var k = data.val();
+ let n= Object.keys(k);
+ if(k.password ==password){
+swal("Congratulations!"); 
+//console.log(k.password+"\n ..........");
+try{
+ for(var i = 0;i<k.solved.length;i++){
+     clas("solvedInfo")[0].innerText="Solved";
+    solved_problem.push(k.solved[i]);
+    
+ var data_info = `
+  <div onclick="activate_ground(${k.solved[i]})" class="code-title">${codes[k.solved[i]].title}
+            <div class="problemInfo"><span class="difficulty">${codes[k.solved[i]].level}</span><span class="solvedInfo">Solved</span></div>
+            </div>
+  `;
+ clas("solved_problems")[0].innerHTML +=  data_info;
+     
+ }
+}
+catch(e){}
+ clas("user-points")[0].innerText ="Points : "+ k.points; 
+ clas("user-name")[0].innerText = rname;    
+  
+ setTimeout(()=>{
+clas("setting-lg")[0].style.visibility="hidden";
+clas("setting-lg")[0].style.opacity="0";
+},700);
+show_points();
+ }
+ else{
+     swal("Invalid Password");
+ }
+});
+}
+else{
+   swal("User not registered!"); 
+}
+}
+else{
+    swal("Invalid Name and Password!");
+}
 }
 function registr(){
-    clas("formContainer")[0].style.visibility="hidden";
+var name = clas("userRegisterName")[0].value;
+var pasword = clas("userRegisterPassword")[0].value;
+
+if(name && pasword){
+//Register
+if(!registrUsers.includes(name)){
+clas("formContainer")[0].style.visibility="hidden";
  clas("formContainer")[0].style.opacity="0";
 clas("formContainer1")[0].style.visibility="hidden";
  clas("formContainer1")[0].style.opacity="0";
  
-var name = clas("userRegisterName")[0].value;
-var pasword = clas("userRegisterPassword")[0].value;
-
-
-//Register
-if(name && pasword){
-if(!registrUsers.includes(name)){
-var ref = db.ref("/users/"+name);
+rname = name;
+var ref = db.ref("/users/"+rname);
 var data = {
-   points : 0,
-   password: pasword, 
+   points : 10,
+   password: pasword,
+   solved:[],
 };
 ref.set(data);
+clas("user-name")[0].innerText = rname; 
+
+swal("Congratulations!");
+
+setTimeout(()=>{
+clas("setting-lg")[0].style.visibility="hidden";
+clas("setting-lg")[0].style.opacity="0";
+
+setTimeout(()=>{
+ swal("10 Points For register")   
+},2000);
+},700); 
+
+
+
 }
 else{
-    alert("Cant Register");
+    swal("User already Registered");
 }
 
 }
+else{
 
+if(!name && !pasword){
+    swal("Enter Name & Password");
+}
+else if(!name){
+    swal("Please Enter Name");
+    
+}
+else if(!pasword){
+    swal("Please Enter Password");
+}
+
+}
 
 
 
@@ -147,8 +257,38 @@ clas("data")[i].innerHTML+= `
     
 }
 let registrUsers= [];
+let loading = true; 
+var topLearnerhtml = ` <div class="skelton-user-name-container-post">
+  <div class="skelton-user-avatar-pic"></div>
+  <div class="skelton-user-name-line"></div>
+  <div class="skelton-user-name-line"></div>
+    </div> <div class="skelton-user-name-container-post">
+  <div class="skelton-user-avatar-pic"></div>
+  <div class="skelton-user-name-line"></div>
+  <div class="skelton-user-name-line"></div>
+    </div>  <div class="skelton-user-name-container-post">
+  <div class="skelton-user-avatar-pic"></div>
+   <div class="skelton-user-name-line"></div>
+  <div class="skelton-user-name-line"></div>
+    </div> <div class="skelton-user-name-container-post">
+  <div class="skelton-user-avatar-pic"></div>
+  <div class="skelton-user-name-line"></div>
+  <div class="skelton-user-name-line"></div>
+    </div><div class="skelton-user-name-container-post">
+ <div class="skelton-user-avatar-pic"></div>
+ <div class="skelton-user-name-line"></div>
+ <div class="skelton-user-name-line"></div>
+    </div>
+    <div class="skelton-user-name-container-post">
+  <div class="skelton-user-avatar-pic"></div>
+  <div class="skelton-user-name-line"></div>
+  <div class="skelton-user-name-line"></div>
+    </div> 
+    
+    `;
 window.onload = init;
 function init(){
+
     var menu = document.querySelector('.menu');
         var back = document.querySelector('.back');
   menu.addEventListener("click",function(){
@@ -157,14 +297,6 @@ function init(){
 back.addEventListener("click",function(){
     document.querySelector(".navitems").style.left = "-100vw";
 });
-  setTimeout(()=>{ 
-    id("loading").classList.add("remove");
-   for(var i=0;i<clas("difficulty").length;i++){
-   clas("difficulty")[i].innerText=codes[i].level;
-} 
-    
-   },1000);
-   
 var items = document.getElementsByClassName("item");
 document.getElementById("indicator").style.width = 100/items.length + "%";        
     for(var i = 0; i<items.length; i++){    
@@ -173,6 +305,10 @@ document.getElementById("indicator").style.left = 100/items.length*i + "%" ;
       }
     }      
   
+for(var i=0;i<clas("difficulty").length;i++){
+   clas("difficulty")[i].innerText=codes[i].level;
+} 
+
 
  firebase.initializeApp({
       databaseURL: "https://fir-app-4ea60.firebaseio.com"
@@ -181,20 +317,28 @@ document.getElementById("indicator").style.left = 100/items.length*i + "%" ;
 db = firebase.database();
 dbRef = db.ref("users/");
 
-  
 // registrUsers= [];
 
+try{
 dbRef.on("value",(data)=>{
+
+if(loading){
+ id("loading").classList.add("remove");    
+    swal("Loading Completed!");
+    loading = false; 
+ }
+ 
 var key = data.val();
 let keys = Object.keys(key);
 registrUsers = keys;
+//console.log(registrUsers)
 for(var i = 0;i<keys.length;i++){
     var k = keys[i];
-   // console.log(key[k].points)
-   // console.log(key[k].password)
+   //console.log(key[k].points)
+      
 }
-});    
-   
+}); 
+}catch(err){} 
 }
 function items(e){
 var items = document.getElementsByClassName("item");    
@@ -212,7 +356,8 @@ document.getElementById("indicator").style.left = 100/items.length*i + "%" ;
 }
 
 
-function top_rankers(e){
+function top_rankers(e){ 
+clas("top-learner")[0].innerHTML =topLearnerhtml;
     items(e);
     clas("main-heading")[0].innerHTML ="Top Learners";
     clas("course")[0].style.visibility="hidden";
@@ -227,10 +372,32 @@ function top_rankers(e){
     clas("setting-page")[0].style.visibility="hidden";
     clas("setting-page")[0].style.opacity="0";
     current_page=0;
+  let no = []; db.ref("users/").on("value",function(data){
+  let k = data.val();
+ let array1 = Object.entries(k);
+let array2 = array1.sort((letter1, letter2) => letter2[1].points - letter1[1].points);
+let array3 = array2.map(([letter, score]) => letter);
+
+//console.log(array3);
+setTimeout(()=>{
+clas("top-learner")[0].innerHTML=" ";
+for(let i in array3){
+clas("top-learner")[0].innerHTML+=`
+<div class="learner-info-container">
+  <div class="learner-pic"><p class="learner-pic-info">${array3[i].substring(0,1)}</p></div>
+  <div class="learner-name">${array3[i]}</div>
+  <div class="learner-points">Points : ${k[array3[i]].points}</div>
+    </div>`;
+   
+};
+},1000); 
+ });
+ 
 }
 
 function setting_page(e){
     items(e);
+    clas("top-learner")[0].innerHTML =topLearnerhtml;
     clas("main-heading")[0].innerHTML ="Setting";
     clas("course")[0].style.visibility="hidden";
     clas("course")[0].style.opacity="0";  
@@ -247,22 +414,29 @@ function setting_page(e){
     current_page=0;
     
     setTimeout(()=>{
-    clas("setting-page")[0].innerHTML=" ";  
+  clas("setting-page")[0].innerHTML=" ";  
     clas("setting-page")[0].innerHTML+=`
-    <div class="setting-container">
-    <center><h2 class="lgn">Login/Register</h2></center>
-    <button onclick="loginUser()" class="login-btn">Login</button>
-    <button onclick="registerUser()" class="register-btn">Register</button>
+    
+     <div class="setting-container">
+    <center><h2>Change Theme</center></h2>
+    <input class="theme-color" type="color" value="#9A31EA"/><input class="other-color" type="color" value="#ff6666" />
+    <button onclick="changeTheme()" class="change-theme">Change Theme</button>
+    </div>    
+     <div class="setting-container">
+    <center><h2>SignOut</center></h2>
+    <button class="user-signout" onclick= "signout()">SignOut</button>
     </div>
     `;
     },500);
 }
 function js_course(e){
-    items(e);
+    items(e); 
+    evt_id= e;
     back_course();
     quiz_no =0;
     show_points();
     clas("main-heading")[0].innerHTML ="JavaScript Course";
+    clas("top-learner")[0].innerHTML =topLearnerhtml;
     clas("course")[0].style.visibility="visible";
     clas("course")[0].style.opacity="1";  
     clas("code-coach")[0].style.visibility="hidden";
@@ -278,11 +452,13 @@ function js_course(e){
     
 }
 function coach(e){
+evt = e;
     items(e);
     back_course()
     quiz_no =0;
     show_points()
  clas("main-heading")[0].innerHTML ="Code Coach Playground";
+ clas("top-learner")[0].innerHTML =topLearnerhtml;
  clas("code-coach")[0].style.visibility="visible";
     clas("code-coach")[0].style.opacity="1";
     
@@ -303,6 +479,7 @@ function leaderboard(e){
     quiz_no =0;
     show_points()
     clas("main-heading")[0].innerHTML ="Leaderboard";
+    clas("top-learner")[0].innerHTML =topLearnerhtml;
     clas("user-leaderboard")[0].style.visibility="visible";
     clas("user-leaderboard")[0].style.opacity="1";
     
@@ -376,6 +553,7 @@ function back_course(){
     clas("course")[0].style.opacity ="1";    
     quiz_no =0;
     current_page=0;
+    
 }
 
 function slctAns(k){
@@ -389,27 +567,35 @@ var correctAns =quiz_data[no].quizzes[quiz_no].question_data.options[quizAns].da
 if(correctAns == quiz_ans){
 var quizLen = quiz_data[no].totalQuiz;
 if(quiz_no !== quizLen-1){
+   setTimeout(()=>{ 
     quiz_no++;
     activateQuiz(no);
+    },500);
 }
 else{
     back_course()
 }
 clas("quizzes_result_box")[0].innerText="Congratulations for solving previous quiz";
+win_song.play()
 } 
 else{
-     clas("quizzes_result_box")[0].innerText="Try Again";  
-   
+    clas("quizzes_result_box")[0].innerText="Try Again";  
+   lose_song.play();
 }
 }
 
 
 function show_points(){
+try{
       solved_problem.forEach(function(data){
     clas("solvedInfo")[data].innerText="Solved"; 
      counter =0;
-  clas("user-points")[0].innerText ="Points : "+points;  
+   db.ref("/users/"+rname+"/points").on("value",function(data){
+       clas("user-points")[0].innerText ="Points : "+ data.val(); 
+       //console.log(data.val())
    });
+   });
+   }catch(e){}
 }
 
 
@@ -490,30 +676,41 @@ var codeSchema = codes[activeIndex];
     codeSchema.solved = solved;
     codeSchema.code = editor.getValue();
     
-      if(counter==codes[activeIndex].testCases.length){
-solved_problem.push(activeIndex);
+db.ref("/users/"+rname+"/points").on("value",function(data){
+    points = data.val();
+});    
+          if(counter==codes[activeIndex].testCases.length){
+        
+if(clas("solvedInfo")[activeIndex].textContent=="UnSolved"){
+swal("Congratulations!");
+  solved_problem.push(activeIndex);          
  if(codes[activeIndex].level=="Easy"){
     points+=easy_problem_points;
+ db.ref("/users/"+rname+"/points").set(points);
        
 }
 else if(codes[activeIndex].level=="Medium"){
     points+= medium_problem_points;
+    db.ref("/users/"+rname+"/points").set(points);
         
 }
 else if(codes=[activeIndex].level=="Hard"){
     points+= hard_problem_points;
+    db.ref("/users/"+rname+"/points").set(points);
     
 }
-  
- if(codes[activeIndex].isSolved==false){
- var data_info = `
+ db.ref("/users/"+rname+"/solved").set(solved_problem);
+ 
+clas("solvedInfo")[activeIndex].textContent="Solved";
+var data_info = `
   <div onclick="activate_ground(${activeIndex})" class="code-title">${codes[activeIndex].title}
-            <div class="problemInfo"><span class="difficulty">${codes[activeIndex].level}</span><span class="solvedInfo">UnSolved</span></div>
+            <div class="problemInfo"><span class="difficulty">${codes[activeIndex].level}</span><span class="solvedInfo">Solved</span></div>
             </div>
   `;
  clas("solved_problems")[0].innerHTML +=  data_info;
- codes[activeIndex].isSolved = true;
-   };
+ 
+  show_points(); 
+  };
 }
         
 }
@@ -592,7 +789,7 @@ const codes = [
         isSolved : false,
         code: `function isEven(input){
     // your code goes here
-    
+   
     
 }`,
         testCases:  [
@@ -619,7 +816,7 @@ const codes = [
         isSolved : false,
         code: `function isOdd(input){
     // your code goes here
-    
+      
     
 }`,
         testCases:  [
