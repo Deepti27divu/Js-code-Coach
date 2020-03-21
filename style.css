@@ -176,7 +176,7 @@ svg{
     background-color:var(--theme);
     color:var(--default-text);
     text-shadow: 0 0 10px crimson;
-    z-index:3;
+    z-index:5;
     margin-bottom:50px;
 }
 
@@ -351,7 +351,7 @@ svg{
     width:100vw;
     transition:0.5s;
     left:-100vw;
-    z-index:4;
+    z-index:6;
     background-color:var(--theme);
     overflow-y:scroll;
     background-image:linear-gradient(120deg, #7b81ec 0%, #3bd1d3 100%);
